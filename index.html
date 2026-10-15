@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>Accueil — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page (pour les moteurs de recherche) -->
+    <meta name="description"
+        content="Un site de veille qui explique les bases du web aux débutants : histoire, URL, noms de domaine, standards et sécurité.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <!-- Feuille de style commune -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Script commun ("defer" = exécuté une fois la page chargée) -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-accueil" active les couleurs de l'espace (voir style.css, section 1) -->
+
+<body class="theme-accueil">
+
+    <!-- Lien pour aller directement au contenu (utile au clavier) -->
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU (identique sur toutes les pages,
+       seul le lien qui porte aria-current="page" change)
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <!-- TEXTE À REMPLACER : nom du site -->
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html" aria-current="page">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="noms-de-domaine.html">Noms de domaine</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ---------- Introduction et planète ---------- -->
+            <section class="intro intro-accueil">
+                <div>
+                    <span class="intro-surtitre">Site de veille</span>
+
+                    <!-- TEXTE À REMPLACER : titre principal -->
+                    <h1>Voyage au cœur du web</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        Embarquez pour un tour du monde en cinq étapes et découvrez,
+                     comment fonctionne le web que vous utilisez tous les jours.
+                    </p>
+                    <p><a class="bouton" href="timeline.html">Commencer le voyage →</a></p>
+                </div>
+
+                <!-- ==========================================================
+           LA PLANÈTE ET LA VOITURE QUI EN FAIT LE TOUR
+           ----------------------------------------------------------
+           L'anneau est dessiné en deux moitiés : celle de derrière
+           (avant la planète dans le code) et celle de devant (après).
+           La voiture roule sur l'anneau grâce à main.js
+           (section « Voiture autour de la planète ») : elle fait deux
+           tours puis s'arrête. Un clic sur la planète la relance
+           (ou l'arrête si elle roule).
+           ========================================================== -->
+                <div class="planete-bloc">
+                    <button class="planete-scene planete-anneau" type="button"
+                        aria-label="Relancer la voiture autour de la planète">
+                        <svg class="anneau anneau-arriere" viewBox="0 0 200 200" preserveAspectRatio="none">
+                            <path d="M20 108 A80 22 0 0 1 180 108" />
+                        </svg>
+                        <svg class="planete planete-fixe" viewBox="0 0 200 200">
+                            <defs>
+                                <clipPath id="planete-disque">
+                                    <circle cx="100" cy="100" r="78" />
+                                </clipPath>
+                            </defs>
+                            <circle class="planete-mer" cx="100" cy="100" r="78" />
+                            <g clip-path="url(#planete-disque)">
+                                <g class="planete-continents-fixes">
+                                    <path
+                                        d="M28 70 q14 -22 38 -14 q16 6 12 22 q-4 14 -20 12 q-6 16 -20 10 q-14 -8 -10 -30 Z" />
+                                    <path d="M70 120 q18 -8 30 6 q10 14 -4 30 q-12 14 -24 2 q-10 -12 -2 -38 Z" />
+                                    <path d="M118 52 q20 -10 34 4 q8 10 -6 18 q-16 8 -26 -4 Z" />
+                                    <path d="M132 104 q24 -6 30 14 q4 18 -16 22 q-20 2 -22 -14 q-2 -14 8 -22 Z" />
+                                </g>
+                                <path class="planete-nuage" d="M40 104 q8 -8 18 -2 q6 -6 14 0 q8 2 4 8 h-38 z" />
+                                <path class="planete-nuage" d="M120 150 q8 -8 18 -2 q6 -6 14 0 q8 2 4 8 h-38 z" />
+                                <path class="planete-reflet" d="M58 52 q18 -18 44 -20" />
+                            </g>
+                            <circle class="planete-contour" cx="100" cy="100" r="78" />
+                        </svg>
+                        <svg class="anneau anneau-avant" viewBox="0 0 200 200" preserveAspectRatio="none">
+                            <path d="M20 108 A80 22 0 0 0 180 108" />
+                        </svg>
+                        <img class="anneau-voiture" src="images/timeline/voiture.png" alt="" width="360" height="189">
+                    </button>
+                    <!-- TEXTE À REMPLACER si besoin -->
+                    <p class="planete-indice">Cliquez sur la planète pour relancer la voiture&nbsp;!</p>
+                </div>
+            </section>
+
+            <!-- ---------- Les cinq étapes du voyage ---------- -->
+            <section class="section" aria-labelledby="titre-sujets">
+                <h2 id="titre-sujets">Les cartes postales du voyage</h2>
+
+                <!--
+          Les cartes postales du voyage : une par étape.
+          Le paysage de chaque carte vient du décor de la page (style.css,
+          bloc « PAGE ACCUEIL »). Le personnage est l'image <img class="carte-voyageur">.
+        -->
+                <ul class="cartes cartes-postales">
+                    <li class="carte carte-postale" data-etape="timeline">
+                        <div class="carte-paysage">
+                            <img class="carte-voyageur" src="images/timeline/campagne.png" alt="">
+                        </div>
+                        <div class="carte-contenu">
+                            <p class="carte-etape">Étape 1 · La campagne</p>
+                            <h3>La timeline du web</h3>
+                            <!-- TEXTE À REMPLACER si besoin -->
+                            <p>Remontez le temps de 1969 à aujourd'hui dans notre carnet de voyage.</p>
+                            <a class="bouton" href="timeline.html">Découvrir</a>
+                        </div>
+                    </li>
+
+                    <li class="carte carte-postale" data-etape="url">
+                        <div class="carte-paysage">
+                            <img class="carte-voyageur" src="images/url/personnage.png" alt="">
+                        </div>
+                        <div class="carte-contenu">
+                            <p class="carte-etape">Étape 2 · La ville</p>
+                            <h3>Les URL</h3>
+                            <!-- TEXTE À REMPLACER si besoin -->
+                            <p>Apprenez à lire une adresse web et découvrez ce que répond le serveur.</p>
+                            <a class="bouton" href="url.html">Découvrir</a>
+                        </div>
+                    </li>
+
+                    <li class="carte carte-postale" data-etape="domaine">
+                        <div class="carte-paysage">
+                            <img class="carte-voyageur" src="images/noms-de-domaine/randonneur.png" alt="">
+                        </div>
+                        <div class="carte-contenu">
+                            <p class="carte-etape">Étape 3 · La montagne</p>
+                            <h3>Les noms de domaine</h3>
+                            <!-- TEXTE À REMPLACER si besoin -->
+                            <p>Grimpez jusqu'au sommet pour comprendre le DNS, puis jouez au memory.</p>
+                            <a class="bouton" href="noms-de-domaine.html">Découvrir</a>
+                        </div>
+                    </li>
+
+                    <li class="carte carte-postale" data-etape="standards">
+                        <div class="carte-paysage">
+                            <img class="carte-voyageur" src="images/standards/plage.png" alt="">
+                        </div>
+                        <div class="carte-contenu">
+                            <p class="carte-etape">Étape 4 · La mer</p>
+                            <h3>Les standards du web</h3>
+                            <!-- TEXTE À REMPLACER si besoin -->
+                            <p>Jetez une bouteille à la mer et construisez votre bateau en HTML, CSS et JavaScript.</p>
+                            <a class="bouton" href="standards.html">Découvrir</a>
+                        </div>
+                    </li>
+
+                    <li class="carte carte-postale" data-etape="securite">
+                        <div class="carte-paysage">
+                            <img class="carte-voyageur" src="images/securite/explorateur.png" alt="">
+                        </div>
+                        <div class="carte-contenu">
+                            <p class="carte-etape">Étape 5 · La savane</p>
+                            <h3>La sécurité</h3>
+                            <!-- TEXTE À REMPLACER si besoin -->
+                            <p>Partez en safari photo pour repérer les arnaques cachées dans les messages.</p>
+                            <a class="bouton" href="securite.html">Découvrir</a>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ---------- Démarche ---------- -->
+            <section class="section texte" aria-labelledby="titre-demarche">
+                <!-- TEXTE À REMPLACER -->
+                <h2 id="titre-demarche">Notre démarche</h2>
+                <p>
+                    Texte provisoire : expliquez comment vous avez mené vos recherches
+                    et dans quel cadre ce site a été réalisé.
+                </p>
+                <p>
+                    <a href="sources.html">Consulter toutes nos sources</a>
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE (identique sur toutes les pages)
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Océane Doret et Jules Dor</p>
+
+            <!-- TEXTE À REMPLACER : I -->
+            <p>Examen de web design — IFOSUP Wavre — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <!-- Bouton « retour en haut » (apparaît quand on descend) -->
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>

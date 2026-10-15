@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>Les URL — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page -->
+    <meta name="description"
+        content="Comprendre ce qu'est une URL, comment la lire, ce que disent les codes de réponse HTTP et les redirections 301 et 302.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-url" active les couleurs de la ville (voir style.css, section 1) -->
+
+<body class="theme-url">
+
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="url.html" aria-current="page">URL</a></li>
+                    <li><a href="noms-de-domaine.html">Noms de domaine</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ==========================================================
+           INTRODUCTION + PERSONNAGE
+           ========================================================== -->
+            <section class="intro intro-avec-guide">
+                <div>
+                    <span class="intro-surtitre">Étape 2 · La ville</span>
+                    <h1>Les URL</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        Dans la ville du web, chaque page a son adresse. Apprenons à la lire
+                        comme on lit l'adresse sur une enveloppe, et découvrons ce que le
+                        serveur nous répond quand on frappe à sa porte.
+                    </p>
+                </div>
+
+                <!-- Le personnage guide, avec sa bulle -->
+                <figure class="guide">
+                    <!-- TEXTE À REMPLACER : ce que dit le personnage -->
+                    <p class="bulle">Bienvenue en ville&nbsp;! Je vais vous aider à lire les adresses.</p>
+                    <img src="images/url/personnage.png" alt="" width="463" height="577">
+                </figure>
+            </section>
+
+
+            <!-- ==========================================================
+           1. QU'EST-CE QU'UNE URL ?
+           ========================================================== -->
+            <section class="section texte" aria-labelledby="titre-definition">
+                <h2 id="titre-definition">Qu'est-ce qu'une URL&nbsp;?</h2>
+
+                <!-- TEXTE À REMPLACER -->
+                <p>
+                    Une <strong>URL</strong> est une adresse qui permet de localiser une
+                    ressource sur Internet&nbsp;: une page web, une image, un document,
+                    une vidéo, etc. L'URL est l'identité d'un site internet ou d'une page internet.
+                </p>
+
+                <div class="astuce">
+                    <p>
+                        <strong>Une adresse postale pour les pages web.</strong>
+                        Pour qu'une lettre arrive, il faut savoir comment l'envoyer, dans quel
+                        immeuble la déposer et dans quelle pièce la remettre. Une URL donne
+                        exactement ces informations à votre navigateur.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           2. COMMENT SE LIT UNE ADRESSE ? (URL interactive)
+           ----------------------------------------------------------
+           Fonctionnement :
+           - chaque morceau de l'URL est un bouton <button class="url-partie">
+           - son attribut data-fiche donne l'id de la fiche à afficher
+           - les fiches sont les blocs <article class="url-fiche"> plus bas :
+             c'est là que vous modifiez les textes des explications
+           Attention : ne laissez ni espace ni retour à la ligne entre les
+           boutons, sinon des espaces apparaîtront dans l'URL affichée.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-lecture">
+                <h2 id="titre-lecture">Comment se lit une adresse&nbsp;?</h2>
+                <p class="texte">
+                    Une URL se lit de gauche à droite, du plus général au plus précis.
+                    Cliquez sur chaque partie de l'adresse écrite sur l'enveloppe.
+                </p>
+
+                <!-- L'enveloppe -->
+                <div class="enveloppe">
+                    <span class="enveloppe-timbre" aria-hidden="true">WEB<br>✉</span>
+                    <span class="enveloppe-cachet" aria-hidden="true">Ville du web</span>
+
+                    <p class="enveloppe-label">Destinataire&nbsp;:</p>
+
+                    <p class="url-exemple"><button class="url-partie" type="button" data-partie="schema"
+                            data-fiche="fiche-schema" aria-controls="url-carte">https://</button><button
+                            class="url-partie" type="button" data-partie="domaine" data-fiche="fiche-domaine"
+                            aria-controls="url-carte">www.exemple.com</button><button class="url-partie" type="button"
+                            data-partie="chemin" data-fiche="fiche-chemin"
+                            aria-controls="url-carte">/blog/article.html</button><button class="url-partie"
+                            type="button" data-partie="parametres" data-fiche="fiche-parametres"
+                            aria-controls="url-carte">?lang=fr&amp;page=2</button></p>
+
+                    <p class="url-indice" aria-hidden="true">☝ Cliquez sur une partie de l'adresse</p>
+                </div>
+
+                <!-- La carte d'explication (une seule fiche visible à la fois) -->
+                <div class="url-carte" id="url-carte" aria-live="polite">
+
+                    <!-- Fiche affichée au départ -->
+                    <article class="url-fiche" id="fiche-depart">
+                        <h3>Choisissez une partie de l'adresse</h3>
+                        <p>Son explication apparaîtra ici, sur cette carte.</p>
+                    </article>
+
+                    <!-- Fiche 1 : le schéma -->
+                    <article class="url-fiche" id="fiche-schema" data-partie="schema" hidden>
+                        <p class="url-fiche-numero">1</p>
+                        <h3>Le schéma (ou protocole)</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>Il indique comment le navigateur doit communiquer avec le serveur.</p>
+                        <p>
+                            Le «&nbsp;s&nbsp;» de <code>https://</code> veut dire que l'échange est
+                            sécurisé. Voilà pourquoi on voit presque toujours <code>https://</code>.
+                        </p>
+                        <p class="url-fiche-analogie"><span>Pour se représenter</span> C'est le moyen de transport de la
+                            lettre.</p>
+                    </article>
+
+                    <!-- Fiche 2 : le nom d'hôte -->
+                    <article class="url-fiche" id="fiche-domaine" data-partie="domaine" hidden>
+                        <p class="url-fiche-numero">2</p>
+                        <h3>Le nom d'hôte (domaine)</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>C'est le nom qui permet de retrouver le site ou le service sur Internet. Décortiquons
+                            <code>www.exemple.com</code>&nbsp;:</p>
+                        <ul class="url-decoupage">
+                            <li><code>www</code> est un sous-domaine utilisé pour le site web. Il n'est pas obligatoire.
+                            </li>
+                            <li><code>exemple</code> est le nom choisi pour le domaine.</li>
+                            <li><code>.com</code> est l'extension, aussi appelée domaine de premier niveau.</li>
+                        </ul>
+                        <p class="url-fiche-analogie"><span>Pour se représenter</span> C'est l'adresse de l'immeuble.
+                        </p>
+                    </article>
+
+                    <!-- Fiche 3 : le chemin -->
+                    <article class="url-fiche" id="fiche-chemin" data-partie="chemin" hidden>
+                        <p class="url-fiche-numero">3</p>
+                        <h3>Le chemin</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>
+                            Il permet d'identifier ce que l'on souhaite consulter sur le site. Il ressemble
+                            à l'organisation des dossiers et des fichiers d'un ordinateur, mais il ne correspond
+                            pas forcément à un vrai fichier&nbsp;: le serveur peut aussi créer la page au moment
+                            de la demande.
+                        </p>
+                        <ul class="url-decoupage">
+                            <li><code>/accueil</code> peut désigner la page d'accueil.</li>
+                            <li><code>/contact</code> peut désigner la page de contact.</li>
+                            <li><code>/images/logo.png</code> peut désigner une image.</li>
+                        </ul>
+                        <p class="url-fiche-analogie"><span>Pour se représenter</span> C'est l'étage de l'appartement.</p>
+                    </article>
+
+                    <!-- Fiche 4 : les paramètres -->
+                    <article class="url-fiche" id="fiche-parametres" data-partie="parametres" hidden>
+                        <p class="url-fiche-numero">4</p>
+                        <h3>Les paramètres</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>
+                            Ce sont des informations supplémentaires pour préciser la demande ou changer le
+                            contenu affiché. Ils commencent par un point d'interrogation <code>?</code> et sont
+                            séparés par <code>&amp;</code>. Chaque paramètre a un nom et une valeur&nbsp;:
+                        </p>
+                        <ul class="url-decoupage">
+                            <li><code>lang=fr</code>&nbsp;: le nom est <code>lang</code>, la valeur est <code>fr</code>.
+                                On demande la version française.</li>
+                            <li><code>page=2</code>&nbsp;: le nom est <code>page</code>, la valeur est <code>2</code>.
+                                On demande la deuxième page.</li>
+                        </ul>
+                        <p>Chaque site décide comment il utilise ces informations&nbsp;: tous ne reconnaissent pas les
+                            mêmes paramètres.</p>
+                        <p class="url-fiche-analogie"><span>Pour se représenter</span> C'est le numéro de l'appartement.</p>
+                    </article>
+
+                </div>
+
+                <!-- Tableau de correspondance URL / adresse postale -->
+                <h3 class="sous-titre-dessin">En résumé</h3>
+                <div class="tableau-conteneur">
+                    <table class="tableau-dessin">
+                        <thead>
+                            <tr>
+                                <th scope="col">Dans l'URL</th>
+                                <th scope="col">Sur l'enveloppe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="pastille" data-partie="schema">https://</code></td>
+                                <td>Le moyen de transport</td>
+                            </tr>
+                            <tr>
+                                <td><code class="pastille" data-partie="domaine">www.exemple.com</code></td>
+                                <td>L'adresse de l'immeuble</td>
+                            </tr>
+                            <tr>
+                                <td><code class="pastille" data-partie="chemin">/blog/article.html</code></td>
+                                <td>L'étage de l'appartement</td>
+                            </tr>
+                            <tr>
+                                <td><code class="pastille" data-partie="parametres">?lang=fr&amp;page=2</code></td>
+                                <td>Le numéro de l'appartement</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           3. LES CODES DE RÉPONSE HTTP
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-codes">
+                <h2 id="titre-codes">Les codes de réponse HTTP</h2>
+
+                <div class="texte">
+                    <!-- TEXTE À REMPLACER -->
+                    <p>
+                        Un <strong>code HTTP</strong> est un nombre envoyé par le serveur à votre
+                        navigateur pour indiquer le résultat de sa demande. Ce code dit si la demande
+                        a réussi, si une redirection est nécessaire ou si une erreur s'est produite.
+                    </p>
+                </div>
+
+                <!-- Petit dialogue navigateur / serveur -->
+                <div class="dialogue" aria-label="Exemple d'échange entre le navigateur et le serveur">
+                    <p class="dialogue-bulle dialogue-navigateur">
+                        <span class="dialogue-qui">Le navigateur</span>
+                        Peux-tu m'envoyer cette page&nbsp;?
+                    </p>
+                    <p class="dialogue-bulle dialogue-serveur">
+                        <span class="dialogue-qui">Le serveur</span>
+                        Voici ma réponse, avec un code&nbsp;: <strong>200</strong>&nbsp;!
+                    </p>
+                </div>
+
+                <!-- Les cinq familles de codes, présentées comme des tampons -->
+                <h3 class="sous-titre-dessin">Les cinq familles de codes</h3>
+                <ul class="familles">
+                    <li class="famille" data-famille="info">
+                        <span class="tampon">1xx</span>
+                        <strong>Information</strong>
+                        <!-- TEXTE À REMPLACER -->
+                        <span>La demande est en cours de traitement.</span>
+                    </li>
+                    <li class="famille" data-famille="succes">
+                        <span class="tampon">2xx</span>
+                        <strong>Succès</strong>
+                        <span>La demande a été reçue et traitée avec succès.</span>
+                    </li>
+                    <li class="famille" data-famille="redirection">
+                        <span class="tampon">3xx</span>
+                        <strong>Redirection</strong>
+                        <span>Il faut aller chercher la ressource à une autre adresse.</span>
+                    </li>
+                    <li class="famille" data-famille="erreur-client">
+                        <span class="tampon">4xx</span>
+                        <strong>Erreur de la demande</strong>
+                        <span>La demande pose problème, par exemple une page introuvable.</span>
+                    </li>
+                    <li class="famille" data-famille="erreur-serveur">
+                        <span class="tampon">5xx</span>
+                        <strong>Erreur du serveur</strong>
+                        <span>Le serveur n'a pas réussi à traiter une demande pourtant valide.</span>
+                    </li>
+                </ul>
+
+                <!-- Personnage + consigne pour les cartes à gratter -->
+                <div class="consigne-grattage">
+                    <img src="images/url/personnage.png" alt="" width="463" height="577">
+                    <p class="bulle bulle-gauche">À vous de jouer&nbsp;! Grattez chaque carte pour découvrir la réponse
+                        du serveur.</p>
+                </div>
+
+                <!--
+          CARTES À GRATTER
+          ----------------------------------------------------------
+          Chaque carte est un <article class="carte-grattage">.
+          - data-famille : la couleur de la carte (succes, redirection,
+            erreur-client, erreur-serveur)
+          - tout ce qui est dans <div class="grattage-contenu"> est caché
+            sous la couche à gratter : c'est là que vous modifiez les textes
+          - le bouton « Tout révéler » permet de découvrir la carte sans
+            gratter (utile au clavier)
+        -->
+                <div class="cartes-grattage">
+
+                    <!-- Carte : 200 -->
+                    <article class="carte-grattage" data-famille="succes">
+                        <header class="carte-grattage-entete">
+                            <span class="tampon">200</span>
+                            <p>Réponse du serveur</p>
+                        </header>
+                        <div class="grattage-zone">
+                            <div class="grattage-contenu">
+                                <h3>200 · OK</h3>
+                                <!-- TEXTE À REMPLACER -->
+                                <p>La demande HTTP a été traitée avec succès.</p>
+                                <p><em>Exemple&nbsp;:</em> vous ouvrez la page d'accueil d'un site et le serveur renvoie
+                                    correctement le contenu demandé.</p>
+                                <p class="carte-attention">Cela ne garantit pas que tout le site fonctionne
+                                    parfaitement, seulement que cette demande a réussi.</p>
+                                <p class="url-fiche-analogie"><span>Côté poste</span> La lettre est bien arrivée.</p>
+                                <p class="carte-retenir">200 = la demande a réussi.</p>
+                            </div>
+                        </div>
+                        <button class="grattage-bouton" type="button">Tout révéler</button>
+                    </article>
+
+                    <!-- Carte : 404 -->
+                    <article class="carte-grattage" data-famille="erreur-client">
+                        <header class="carte-grattage-entete">
+                            <span class="tampon">404</span>
+                            <p>Réponse du serveur</p>
+                        </header>
+                        <div class="grattage-zone">
+                            <div class="grattage-contenu">
+                                <h3>404 · Not Found</h3>
+                                <!-- TEXTE À REMPLACER -->
+                                <p>Le serveur n'a pas trouvé la ressource qui correspond à l'URL demandée.</p>
+                                <p><em>Exemple&nbsp;:</em> vous cliquez sur un lien vers
+                                    <code>/portfolio/photo.jpg</code>, mais cette image n'existe pas à cette adresse.
+                                </p>
+                                <p>La page a pu être supprimée, l'adresse est peut-être mal écrite ou le lien pointe
+                                    vers une mauvaise URL.</p>
+                                <p class="url-fiche-analogie"><span>Côté poste</span> Destinataire introuvable à cette
+                                    adresse.</p>
+                                <p class="carte-retenir">404 = la ressource est introuvable.</p>
+                            </div>
+                        </div>
+                        <button class="grattage-bouton" type="button">Tout révéler</button>
+                    </article>
+
+                    <!-- Carte : 500 -->
+                    <article class="carte-grattage" data-famille="erreur-serveur">
+                        <header class="carte-grattage-entete">
+                            <span class="tampon">500</span>
+                            <p>Réponse du serveur</p>
+                        </header>
+                        <div class="grattage-zone">
+                            <div class="grattage-contenu">
+                                <h3>500 · Internal Server Error</h3>
+                                <!-- TEXTE À REMPLACER -->
+                                <p>Le serveur a rencontré une erreur inattendue qui l'empêche de traiter la demande.</p>
+                                <p><em>Exemple&nbsp;:</em> vous ouvrez la page de contact, mais une erreur dans le
+                                    programme du site empêche le serveur de créer la page.</p>
+                                <p>Le visiteur ne peut généralement rien y faire&nbsp;: c'est à la personne qui gère le
+                                    site de régler le problème.</p>
+                                <p class="url-fiche-analogie"><span>Côté poste</span> Le bureau de poste a un problème
+                                    interne.</p>
+                                <p class="carte-retenir">500 = le serveur a un problème interne.</p>
+                            </div>
+                        </div>
+                        <button class="grattage-bouton" type="button">Tout révéler</button>
+                    </article>
+
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           4. LES REDIRECTIONS 301 ET 302
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-redirections">
+                <h2 id="titre-redirections">Les redirections 301 et 302</h2>
+
+                <div class="texte">
+                    <!-- TEXTE À REMPLACER -->
+                    <p>
+                        Parfois, une page a changé d'adresse. Le serveur répond alors avec un code de
+                        la famille 3xx et indique la nouvelle URL. Le navigateur s'y rend tout seul,
+                        sans que vous ayez rien à faire. Tout dépend de la durée du déménagement&nbsp;:
+                    </p>
+                </div>
+
+                <div class="cartes-grattage cartes-grattage-duo">
+
+                    <!-- Carte : 301 -->
+                    <article class="carte-grattage" data-famille="redirection">
+                        <header class="carte-grattage-entete">
+                            <span class="tampon">301</span>
+                            <p>Réponse du serveur</p>
+                        </header>
+                        <div class="grattage-zone">
+                            <div class="grattage-contenu">
+                                <h3>301 · Moved Permanently</h3>
+                                <!-- TEXTE À REMPLACER -->
+                                <p>La ressource a été déplacée <strong>définitivement</strong> vers une nouvelle URL.
+                                    Les moteurs de recherche remplacent l'ancienne adresse par la nouvelle.</p>
+                                <p><em>Exemple&nbsp;:</em> un site passe de <code>http://</code> à
+                                    <code>https://</code>, ou renomme sa page <code>/contact.html</code> en
+                                    <code>/contact</code>.</p>
+                                <p class="url-fiche-analogie"><span>Côté poste</span> Le destinataire a déménagé pour de
+                                    bon&nbsp;: on fait suivre le courrier et on met à jour son carnet d'adresses.</p>
+                                <p class="carte-retenir">301 = déménagement définitif.</p>
+                            </div>
+                        </div>
+                        <button class="grattage-bouton" type="button">Tout révéler</button>
+                    </article>
+
+                    <!-- Carte : 302 -->
+                    <article class="carte-grattage" data-famille="redirection">
+                        <header class="carte-grattage-entete">
+                            <span class="tampon">302</span>
+                            <p>Réponse du serveur</p>
+                        </header>
+                        <div class="grattage-zone">
+                            <div class="grattage-contenu">
+                                <h3>302 · Found (Temporary Redirect)</h3>
+                                <!-- TEXTE À REMPLACER -->
+                                <p>La ressource se trouve <strong>temporairement</strong> à une autre URL. L'ancienne
+                                    adresse reste la bonne&nbsp;: les moteurs de recherche la gardent.</p>
+                                <p><em>Exemple&nbsp;:</em> pendant une maintenance, la boutique d'un site renvoie ses
+                                    visiteurs vers une page «&nbsp;Revenez bientôt&nbsp;».</p>
+                                <p class="url-fiche-analogie"><span>Côté poste</span> Le destinataire est en
+                                    vacances&nbsp;: son courrier est réexpédié quelques jours, puis il revient chez lui.
+                                </p>
+                                <p class="carte-retenir">302 = déménagement temporaire.</p>
+                            </div>
+                        </div>
+                        <button class="grattage-bouton" type="button">Tout révéler</button>
+                    </article>
+
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           À RETENIR
+           ========================================================== -->
+            <aside class="a-retenir" aria-labelledby="titre-retenir">
+                <h2 id="titre-retenir">À retenir</h2>
+                <!-- TEXTE À REMPLACER -->
+                <ul>
+                    <li>Une URL est l'adresse d'une ressource sur Internet. Elle se lit comme une adresse postale.</li>
+                    <li>Elle se compose d'un schéma, d'un nom d'hôte, d'un chemin et parfois de paramètres.</li>
+                    <li>Le serveur répond toujours avec un code&nbsp;: 200 = succès, 404 = introuvable, 500 = erreur du
+                        serveur.</li>
+                    <li>Une redirection 301 est définitive, une 302 est temporaire.</li>
+                </ul>
+            </aside>
+
+            <!-- ---------- Navigation entre les sujets ---------- -->
+            <nav class="nav-sujets" aria-label="Navigation entre les sujets">
+                <a class="precedent" href="timeline.html">
+                    <small>← Étape précédente</small>
+                    <strong>La timeline du web</strong>
+                </a>
+                <a class="suivant" href="noms-de-domaine.html">
+                    <small>Étape suivante →</small>
+                    <strong>Les noms de domaine</strong>
+                </a>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Prénom Nom et Prénom Nom</p>
+
+            <!-- TEXTE À REMPLACER : votre école et votre cours -->
+            <p>Examen de web design — Nom de l'école — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>

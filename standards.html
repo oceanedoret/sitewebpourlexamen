@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>Les standards du web — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page -->
+    <meta name="description"
+        content="Comprendre les standards du web, les organismes qui les créent et les langages HTML, CSS et JavaScript.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-standards" active les couleurs de la mer (voir style.css, section 1) -->
+
+<body class="theme-standards">
+
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="noms-de-domaine.html">Noms de domaine</a></li>
+                    <li><a href="standards.html" aria-current="page">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ==========================================================
+           INTRODUCTION + PERSONNAGE
+           ========================================================== -->
+            <section class="intro intro-avec-guide">
+                <div>
+                    <span class="intro-surtitre">Étape 4 · La mer</span>
+                    <h1>Les standards du web</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        Cap au large! Pour communiquer, les bateaux ont besoin de règles communes.
+                        Sur le web, c'est pareil&nbsp;: ce sont les standards.
+                    </p>
+                </div>
+
+                <figure class="guide">
+                    <!-- TEXTE À REMPLACER : ce que dit le personnage -->
+                    <p class="bulle">J'ai tout ce qu'il faut&nbsp;! On jette une bouteille à la mer&nbsp;?</p>
+                    <img src="images/standards/plage.png" alt="" width="380" height="425">
+                </figure>
+            </section>
+
+
+            <!-- ==========================================================
+           1. QU'EST-CE QU'UN STANDARD ?
+           ========================================================== -->
+            <section class="section texte" aria-labelledby="titre-definition">
+                <h2 id="titre-definition">Qu'est-ce qu'un standard du web&nbsp;?</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p>
+                    Les <strong>standards du web</strong> sont un ensemble de règles et de recommandations
+                    qui permettent de créer des sites et des applications web compatibles, accessibles et
+                    fonctionnels sur différents navigateurs et appareils. Ils sont notamment définis par le W3C.
+                </p>
+            </section>
+
+
+            <!-- ==========================================================
+           2. LA BOUTEILLE À LA MER (jeu avec / sans standards)
+           ----------------------------------------------------------
+           La même petite page est envoyée sur 3 îles (3 navigateurs).
+           Le bouton « Sans standards / Avec standards » change l'attribut
+           data-mode de .bouteille-jeu ; tout l'affichage « cassé » est
+           géré dans style.css (bloc « PAGE STANDARDS »).
+           Les deux messages d'explication sont les blocs
+           <p class="bouteille-message"> ci-dessous.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-bouteille">
+                <h2 id="titre-bouteille">La bouteille à la mer</h2>
+                <p class="texte">
+                    Glissons la même petite page web dans une bouteille et envoyons-la vers trois îles&nbsp;:
+                    chacune représente un navigateur. Que va-t-elle afficher en arrivant&nbsp;?
+                </p>
+
+                <div class="bouteille-jeu" data-mode="sans">
+
+                    <div class="bouteille-commande">
+                        <span class="bouteille" aria-hidden="true"></span>
+                        <div class="barre-bateau" role="group" aria-label="Choisir le mode">
+                            <button class="barre-option" type="button" data-mode="sans" aria-pressed="true">Sans
+                                standards</button>
+                            <span class="barre-roue" aria-hidden="true">☸</span>
+                            <button class="barre-option" type="button" data-mode="avec" aria-pressed="false">Avec
+                                standards</button>
+                        </div>
+                    </div>
+
+                    <!-- TEXTE À REMPLACER : les deux messages -->
+                    <p class="bouteille-message" data-mode="sans" aria-live="polite">
+                        <strong>Sans standards&nbsp;:</strong> chaque île affiche la page à sa façon.
+                        C'est ce qui se passait à la fin des années 90, pendant la «&nbsp;guerre des navigateurs&nbsp;».
+                    </p>
+                    <p class="bouteille-message" data-mode="avec" aria-live="polite" hidden>
+                        <strong>Avec standards&nbsp;:</strong> tout le monde suit les mêmes règles,
+                        la page arrive identique sur toutes les îles&nbsp;!
+                    </p>
+
+                    <div class="iles">
+                        <article class="ile ile-un">
+                            <img class="ile-decor" src="images/standards/ile.svg" alt="" width="320" height="120">
+                            <p class="ile-nom">L'île Chrome</p>
+                            <div class="mini-navigateur">
+                                <p class="mini-barre" aria-hidden="true"><span></span><span></span><span></span></p>
+                                <div class="mini-page">
+                                    <p class="mini-titre">Mon site de plage</p>
+                                    <div class="mini-image" aria-hidden="true"><span class="mini-soleil"></span><span
+                                            class="mini-vague"></span></div>
+                                    <p class="mini-texte">Bienvenue&nbsp;! Réservez votre transat face à la mer.</p>
+                                    <span class="mini-bouton">Réserver</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="ile ile-deux">
+                            <img class="ile-decor" src="images/standards/ile.svg" alt="" width="320" height="120">
+                            <p class="ile-nom">L'île Firefox</p>
+                            <div class="mini-navigateur">
+                                <p class="mini-barre" aria-hidden="true"><span></span><span></span><span></span></p>
+                                <div class="mini-page">
+                                    <p class="mini-titre">Mon site de plage</p>
+                                    <div class="mini-image" aria-hidden="true"><span class="mini-soleil"></span><span
+                                            class="mini-vague"></span></div>
+                                    <p class="mini-texte">Bienvenue&nbsp;! Réservez votre transat face à la mer.</p>
+                                    <span class="mini-bouton">Réserver</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="ile ile-trois">
+                            <img class="ile-decor" src="images/standards/ile.svg" alt="" width="320" height="120">
+                            <p class="ile-nom">L'île Safari</p>
+                            <div class="mini-navigateur">
+                                <p class="mini-barre" aria-hidden="true"><span></span><span></span><span></span></p>
+                                <div class="mini-page">
+                                    <p class="mini-titre">Mon site de plage</p>
+                                    <div class="mini-image" aria-hidden="true"><span class="mini-soleil"></span><span
+                                            class="mini-vague"></span></div>
+                                    <p class="mini-texte">Bienvenue&nbsp;! Réservez votre transat face à la mer.</p>
+                                    <span class="mini-bouton">Réserver</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           3. QUI DÉCIDE DES RÈGLES ? (les phares)
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-phares">
+                <h2 id="titre-phares">Qui décide des règles&nbsp;?</h2>
+                <p class="texte">
+                    Comme les phares qui guident les bateaux, des organisations guident ceux qui construisent le
+                    web&nbsp;:
+                </p>
+                <div class="phares">
+                    <article class="phare">
+                        <img src="images/standards/phare.svg" alt="" width="120" height="160">
+                        <div>
+                            <h3>Le W3C</h3>
+                            <!-- TEXTE À REMPLACER -->
+                            <p>Fondé en 1994 par Tim Berners-Lee, l'inventeur du web.</p>
+                        </div>
+                    </article>
+                    <article class="phare">
+                        <img src="images/standards/phare.svg" alt="" width="120" height="160">
+                        <div>
+                            <h3>Le WHATWG</h3>
+                            <!-- TEXTE À REMPLACER -->
+                            <p>Créé en 2004 par Apple, Mozilla et Opera.</p>
+                        </div>
+                    </article>
+                </div>
+                <p class="texte">… et d'autres organisations encore.</p>
+            </section>
+
+
+            <!-- ==========================================================
+           4. CONSTRUIS TON BATEAU (les trois langages)
+           ----------------------------------------------------------
+           Trois boutons à cliquer dans l'ordre : HTML, CSS, JavaScript.
+           main.js change l'attribut data-etape de .chantier (0 à 3) ;
+           style.css affiche le bateau et la mini-page selon l'étape.
+           Les explications de chaque étape sont les blocs
+           <p class="chantier-explication">.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-bateau">
+                <h2 id="titre-bateau">Construis ton bateau</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p class="texte">
+                    Une page web se construit avec trois langages de base, comme un bateau&nbsp;:
+                    ajoutez-les un par un et regardez ce qui change.
+                </p>
+
+                <div class="chantier" data-etape="0">
+
+                    <div class="chantier-boutons">
+                        <button class="chantier-bouton" type="button" data-etape="1">1. HTML</button>
+                        <button class="chantier-bouton" type="button" data-etape="2" disabled>2. CSS</button>
+                        <button class="chantier-bouton" type="button" data-etape="3" disabled>3. JavaScript</button>
+                    </div>
+
+                    <div class="chantier-scene">
+                        <!-- Le bateau (dessin SVG dont les parties apparaissent selon l'étape) -->
+                        <div class="chantier-mer">
+                            <svg class="bateau" viewBox="0 0 300 200" aria-hidden="true">
+                                <!-- Étape 0 : le plan en pointillés -->
+                                <path class="bateau-plan" d="M40 120 H260 L230 165 H70 Z M150 120 V30 L215 105 H150" />
+                                <!-- Étape 1 (HTML) : la coque et le mât -->
+                                <g class="bateau-coque">
+                                    <path d="M40 120 H260 L230 165 H70 Z" />
+                                    <path d="M150 120 V28" />
+                                    <circle cx="95" cy="140" r="7" />
+                                    <circle cx="150" cy="140" r="7" />
+                                    <circle cx="205" cy="140" r="7" />
+                                </g>
+                                <!-- Étape 2 (CSS) : la peinture, les voiles et le drapeau -->
+                                <g class="bateau-deco">
+                                    <path class="bateau-voile" d="M156 32 L218 106 H156 Z" />
+                                    <path class="bateau-voile2" d="M144 46 L98 106 H144 Z" />
+                                    <path class="bateau-drapeau" d="M150 28 L176 20 L150 12 Z" />
+                                    <path class="bateau-bande" d="M48 128 H252" />
+                                </g>
+                                <!-- Étape 3 (JavaScript) : le moteur et la fumée -->
+                                <g class="bateau-moteur">
+                                    <rect x="22" y="128" width="20" height="22" rx="4" />
+                                    <circle class="bateau-fumee" cx="30" cy="114" r="6" />
+                                    <circle class="bateau-fumee bateau-fumee2" cx="22" cy="100" r="8" />
+                                </g>
+                            </svg>
+                            <span class="chantier-vagues" aria-hidden="true"></span>
+                        </div>
+
+                        <!-- La mini-page web qui se construit en même temps -->
+                        <div class="mini-navigateur chantier-page">
+                            <p class="mini-barre" aria-hidden="true"><span></span><span></span><span></span></p>
+                            <div class="mini-page">
+                                <p class="chantier-vide">Le chantier est vide…</p>
+                                <p class="mini-titre">Bienvenue à bord&nbsp;!</p>
+                                <p class="mini-texte">Notre bateau vous emmène découvrir les standards du web.</p>
+                                <button class="mini-bouton chantier-action" type="button" tabindex="-1">Larguer les
+                                    amarres</button>
+                                <p class="chantier-reaction" hidden>Bon voyage&nbsp;! ⚓</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXTE À REMPLACER : l'explication de chaque étape -->
+                    <div class="chantier-explications" aria-live="polite">
+                        <p class="chantier-explication" data-etape="0">Cliquez sur <strong>1. HTML</strong> pour
+                            commencer la construction.</p>
+                        <p class="chantier-explication" data-etape="1" hidden><strong>HTML = la coque.</strong> Il pose
+                            la structure&nbsp;: les titres, les paragraphes, les images. La page existe, mais elle est
+                            toute simple.</p>
+                        <p class="chantier-explication" data-etape="2" hidden><strong>CSS = la peinture et les
+                                voiles.</strong> Il s'occupe des couleurs, des polices et de la mise en page&nbsp;: la
+                            décoration.</p>
+                        <p class="chantier-explication" data-etape="3" hidden><strong>JavaScript = le moteur.</strong>
+                            Il ajoute les animations et les boutons qui réagissent. Essayez le bouton de la page&nbsp;!
+                        </p>
+                    </div>
+
+                    <p class="chantier-recommencer-ligne">
+                        <button class="bouton-dessin chantier-recommencer" type="button" hidden>Reconstruire ↺</button>
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           5. HTTP / HTTPS ET ACCESSIBILITÉ
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-autres">
+                <h2 id="titre-autres">D'autres règles importantes</h2>
+                <div class="deux-encadres">
+                    <article class="encadre-mer">
+                        <span class="encadre-icone encadre-bouteille" aria-hidden="true"></span>
+                        <h3>HTTP et HTTPS</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>
+                            C'est le protocole de conversation entre votre navigateur et le serveur
+                            (par exemple&nbsp;: «&nbsp;donne-moi cette page&nbsp;»). Le HTTPS est sa version sécurisée.
+                        </p>
+                    </article>
+                    <article class="encadre-mer">
+                        <span class="encadre-icone bouee" aria-hidden="true"></span>
+                        <h3>L'accessibilité</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>
+                            Un bon site doit pouvoir être utilisé par n'importe qui, avec n'importe quel outil.
+                            Par exemple, une personne aveugle doit pouvoir le parcourir grâce à un lecteur d'écran.
+                            Pour cela, les sites doivent respecter les <strong>WCAG</strong>, les règles d'accessibilité
+                            du W3C.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+
+            <!-- ---------- À retenir ---------- -->
+            <aside class="a-retenir" aria-labelledby="titre-retenir">
+                <h2 id="titre-retenir">À retenir</h2>
+                <!-- TEXTE À REMPLACER -->
+                <ul>
+                    <li>Les standards sont des règles communes pour que les sites fonctionnent partout.</li>
+                    <li>Ils sont définis par des organisations comme le W3C et le WHATWG.</li>
+                    <li>HTML = la structure, CSS = la décoration, JavaScript = le mouvement.</li>
+                    <li>Un bon site est accessible à tout le monde (règles WCAG).</li>
+                </ul>
+            </aside>
+
+            <!-- ---------- Navigation entre les sujets ---------- -->
+            <nav class="nav-sujets" aria-label="Navigation entre les sujets">
+                <a class="precedent" href="noms-de-domaine.html">
+                    <small>← Étape précédente</small>
+                    <strong>Les noms de domaine</strong>
+                </a>
+                <a class="suivant" href="securite.html">
+                    <small>Étape suivante →</small>
+                    <strong>La sécurité</strong>
+                </a>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Prénom Nom et Prénom Nom</p>
+
+            <!-- TEXTE À REMPLACER : votre école et votre cours -->
+            <p>Examen de web design — Nom de l'école — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Une montagne avec un sentier en lacets jusqu'au sommet">
+<rect width="800" height="500" fill="#F8F3EA"/>
+<circle cx="680" cy="80" r="34" fill="#F3E3C3" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 130 q20 -18 44 -4 q14 -16 34 -2 q18 4 10 18 h-90 z" fill="#FFFFFF" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M560 170 q18 -16 40 -4 q14 -14 30 0 q16 4 8 16 h-80 z" fill="#FFFFFF" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-10 470 L170 230 L300 400 Z" fill="#D8C4A3" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M520 420 L660 210 L820 470 Z" fill="#D8C4A3" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 480 L420 70 L760 480 Z" fill="#E6D3B0" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M420 70 L365 132 L388 124 L404 146 L424 122 L446 142 L462 120 L476 134 Z" fill="#FFFFFF" stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M110 455 L560 400 L260 310 L500 215 L420 95" fill="none" stroke="#FFFDF8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M110 455 L560 400 L260 310 L500 215 L420 95" fill="none" stroke="#2A2E35" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M0 470 Q200 455 400 468 T800 462 V500 H0 Z" fill="#CBE5C5"/>
+<path d="M0 470 Q200 455 400 468 T800 462" fill="none" stroke="#A8D5A2" stroke-width="3"/>
+<g stroke="#2A2E35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="#A8D5A2"><path d="M690 470 l22 -50 l22 50 z"/><path d="M730 474 l16 -36 l16 36 z"/><path d="M30 476 l18 -40 l18 40 z"/></g>
+</svg>

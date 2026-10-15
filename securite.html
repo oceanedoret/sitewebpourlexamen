@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>La sécurité — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page -->
+    <meta name="description"
+        content="Les bases de la sécurité sur le web : HTTPS, mots de passe, phishing, virus, données personnelles et bons réflexes.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-securite" active les couleurs de la savane (voir style.css, section 1) -->
+
+<body class="theme-securite">
+
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="noms-de-domaine.html">Noms de domaine</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html" aria-current="page">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ==========================================================
+           INTRODUCTION + PERSONNAGE
+           ========================================================== -->
+            <section class="intro intro-avec-guide">
+                <div>
+                    <span class="intro-surtitre">Étape 5 · La savane</span>
+                    <h1>La sécurité sur le web</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        Avant-dernière étape du voyage&nbsp;: le safari&nbsp;! Ouvrons l'œil, car dans la savane
+                        du web, certains prédateurs se cachent dans les hautes herbes.
+                    </p>
+                </div>
+
+                <figure class="guide">
+                    <!-- TEXTE À REMPLACER : ce que dit le personnage -->
+                    <p class="bulle">Restez dans la jeep, on part observer&nbsp;!</p>
+                    <img src="images/securite/explorateur.png" alt="" width="380" height="478">
+                </figure>
+            </section>
+
+
+            <!-- ==========================================================
+           1. QU'EST-CE QUE LA SÉCURITÉ SUR LE WEB ?
+           ========================================================== -->
+            <section class="section texte" aria-labelledby="titre-definition">
+                <h2 id="titre-definition">Qu'est-ce que la sécurité sur le web&nbsp;?</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p>
+                    La <strong>sécurité sur le web</strong> désigne l'ensemble des techniques et bonnes pratiques
+                    qui permettent de protéger les sites, les applications, les serveurs et les utilisateurs
+                    contre les attaques informatiques, le vol de données et les accès non autorisés.
+                </p>
+                <div class="astuce">
+                    <p>
+                        <strong>Pour se représenter&nbsp;:</strong>
+                        Internet, c'est comme une savane&nbsp;: la plupart des animaux sont paisibles, mais
+                        on reste prudent, on garde la jeep fermée et on ne s'approche pas de n'importe qui.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           2. HTTPS ET LE CADENAS
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-https">
+                <h2 id="titre-https">HTTPS et le cadenas</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p class="texte">
+                    Quand vous voyez le <strong>cadenas</strong> dans la barre d'adresse, vos échanges avec le site
+                    sont <strong>chiffrés</strong>&nbsp;:
+                </p>
+                <div class="comparaison-courrier">
+                    <article class="courrier">
+                        <span class="dessin-carte-postale" aria-hidden="true"></span>
+                        <h3>Sans HTTPS</h3>
+                        <p>Comme une carte postale&nbsp;: tout le monde peut la lire en chemin.</p>
+                    </article>
+                    <article class="courrier courrier-sur">
+                        <span class="dessin-lettre" aria-hidden="true"></span>
+                        <h3>Avec HTTPS 🔒</h3>
+                        <p>Comme une lettre dans une enveloppe scellée&nbsp;: seul le destinataire peut l'ouvrir.</p>
+                    </article>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           3. LE SAFARI PHOTO DU PHISHING
+           ----------------------------------------------------------
+           Chaque « sortie » est un faux message (<article class="safari-message">).
+           Les indices à trouver sont les <button class="indice"> :
+           - data-titre       : le nom de l'indice (affiché dans le carnet)
+           - data-explication : la courte explication
+           Pour ajouter un indice : entourez un morceau de texte avec
+           <button class="indice" type="button" data-titre="…" data-explication="…">…</button>
+           Pour ajouter une sortie : copiez un <article class="safari-message">
+           et changez son data-sortie (4, 5…).
+           Les messages et les adresses sont inventés pour l'exemple.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-phishing">
+                <h2 id="titre-phishing">Le safari photo du phishing</h2>
+                <div class="texte">
+                    <!-- TEXTE À REMPLACER -->
+                    <p>
+                        Le <strong>phishing</strong> (ou hameçonnage), ce sont de faux messages ou de faux sites qui
+                        imitent une vraie entreprise pour vous voler vos identifiants. Bon réflexe&nbsp;: vérifiez
+                        l'adresse et ne cliquez jamais sur un lien suspect.
+                    </p>
+                    <p>
+                        <strong>À vous de jouer&nbsp;!</strong> Prenez vos jumelles et touchez tous les indices
+                        suspects cachés dans chaque message pour les photographier.
+                    </p>
+                </div>
+
+                <div class="safari-jeu">
+                    <div class="safari-tableau">
+                        <p class="safari-sortie">Sortie 1 sur 3</p>
+                        <p class="safari-compteur" aria-live="polite">0 indice photographié sur 5</p>
+                    </div>
+
+                    <div class="safari-zone">
+                        <!-- La vue dans les jumelles -->
+                        <div class="jumelles">
+                            <span class="flash" aria-hidden="true"></span>
+                            <p class="safari-rien" aria-live="polite" hidden>Rien de suspect ici… cherchez encore&nbsp;!
+                            </p>
+                            <!-- Sortie 1 : un faux e-mail de banque -->
+                            <article class="safari-message" data-sortie="1">
+                                <p class="message-type">E-mail</p>
+                                <p class="message-entete"><span>De&nbsp;:</span> <button class="indice" type="button"
+                                        data-titre="Adresse bizarre"
+                                        data-explication="Une vraie banque n'écrit pas depuis une adresse aussi compliquée, avec une fin en .xyz.">Service
+                                        client &lt;securite@banque-baobab.verif-login.xyz&gt;</button></p>
+                                <p class="message-entete"><span>Objet&nbsp;:</span> <button class="indice" type="button"
+                                        data-titre="Urgence artificielle"
+                                        data-explication="On veut vous faire paniquer pour que vous agissiez sans réfléchir.">URGENT&nbsp;:
+                                        votre compte sera bloqué</button></p>
+                                <div class="message-corps">
+                                    <p>Cher client,</p>
+                                    <p>Nous avons détecté une <button class="indice" type="button"
+                                            data-titre="Faute d'orthographe"
+                                            data-explication="« Activitée » au lieu de « activité » : les fautes sont un signe fréquent d'arnaque.">activitée
+                                            suspecte</button> sur votre compte.</p>
+                                    <p><button class="indice" type="button" data-titre="Demande d'identifiants"
+                                            data-explication="Une banque ne vous demande jamais votre mot de passe ou votre code par e-mail.">Merci
+                                            d'indiquer votre mot de passe et votre code de carte</button> en cliquant
+                                        sur le lien ci-dessous.</p>
+                                    <p><button class="indice" type="button" data-titre="Lien douteux"
+                                            data-explication="Ce lien ne mène pas au vrai site de la banque, et il n'est même pas en HTTPS.">http://banque-baobab.confirmation-compte.ru</button>
+                                    </p>
+                                    <p>Cordialement,<br>Le service sécurité</p>
+                                </div>
+                            </article>
+                            <!-- Sortie 2 : un faux SMS de livraison -->
+                            <article class="safari-message" data-sortie="2" hidden>
+                                <p class="message-type">SMS</p>
+                                <p class="message-entete"><span>De&nbsp;:</span> <button class="indice" type="button"
+                                        data-titre="Numéro inconnu"
+                                        data-explication="Un numéro étranger que vous ne connaissez pas : prudence.">+44
+                                        7700 900123</button></p>
+                                <div class="message-corps message-bulle">
+                                    <p>Bonjour, <button class="indice" type="button" data-titre="Faute d'orthographe"
+                                            data-explication="« Et » au lieu de « est » : une faute qui doit vous mettre la puce à l'oreille.">votre
+                                            colis et bloqué</button> au centre de tri.</p>
+                                    <p><button class="indice" type="button" data-titre="Petit paiement piège"
+                                            data-explication="Le montant est petit pour vous rassurer, mais le but est de récupérer votre numéro de carte.">Payez
+                                            1,99&nbsp;€ de frais</button> pour le récupérer&nbsp;:</p>
+                                    <p><button class="indice" type="button" data-titre="Lien douteux"
+                                            data-explication="Ce n'est pas l'adresse d'un vrai transporteur.">colis-suivi-livraison.top/paiement</button>
+                                    </p>
+                                    <p><button class="indice" type="button" data-titre="Urgence artificielle"
+                                            data-explication="Encore une fois, on vous presse pour vous empêcher de réfléchir.">Dernier
+                                            rappel avant retour à l'expéditeur&nbsp;!</button></p>
+                                </div>
+                            </article>
+                            <!-- Sortie 3 : un faux message « vous avez gagné » -->
+                            <article class="safari-message" data-sortie="3" hidden>
+                                <p class="message-type">Message</p>
+                                <p class="message-entete"><span>De&nbsp;:</span> <button class="indice" type="button"
+                                        data-titre="Adresse bizarre"
+                                        data-explication="Une adresse inconnue, avec une extension étrange.">cadeaux@super-gagnant.win</button>
+                                </p>
+                                <div class="message-corps">
+                                    <p class="message-gros"><button class="indice" type="button"
+                                            data-titre="Trop beau pour être vrai"
+                                            data-explication="Personne ne gagne un cadeau sans avoir participé à rien.">Félicitations&nbsp;!!!
+                                            Vous êtes notre 1&nbsp;000&nbsp;000<sup>e</sup> visiteur et vous gagnez un
+                                            smartphone&nbsp;!</button></p>
+                                    <p><button class="indice" type="button" data-titre="Urgence artificielle"
+                                            data-explication="Le compte à rebours sert à vous faire cliquer vite.">Offre
+                                            valable 10 minutes seulement&nbsp;!</button></p>
+                                    <p><button class="indice" type="button" data-titre="Demande de données"
+                                            data-explication="On essaie de récupérer vos informations bancaires.">Entrez
+                                            votre numéro de carte bancaire pour les frais d'envoi.</button></p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Le carnet de safari où s'ajoutent les indices trouvés -->
+                        <aside class="carnet-safari" aria-labelledby="titre-carnet-safari">
+                            <h3 id="titre-carnet-safari">Carnet de safari</h3>
+                            <ol class="carnet-safari-liste" aria-live="polite"></ol>
+                            <p class="carnet-safari-vide">Aucun indice photographié pour l'instant.</p>
+                        </aside>
+                    </div>
+
+                    <div class="safari-fin" aria-live="polite" hidden>
+                        <p class="safari-fin-texte"></p>
+                    </div>
+
+                    <p class="safari-commandes">
+                        <button class="bouton-dessin safari-reveler" type="button">Révéler les indices</button>
+                        <button class="bouton-dessin safari-suivant" type="button" hidden>Sortie suivante →</button>
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           4. LES AUTRES DANGERS DE LA SAVANE
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-dangers">
+                <h2 id="titre-dangers">Les autres dangers de la savane</h2>
+                <div class="fiches-observation">
+                    <article class="fiche-observation">
+                        <p class="fiche-espece">Fiche d'observation</p>
+                        <h3>Les mots de passe</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>Un bon mot de passe est long, unique pour chaque site et idéalement géré par un gestionnaire
+                            de mots de passe. La double authentification ajoute une deuxième clé.</p>
+                    </article>
+                    <article class="fiche-observation">
+                        <p class="fiche-espece">Fiche d'observation</p>
+                        <h3>Les virus et malwares</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>Ce sont des programmes malveillants cachés dans des téléchargements douteux.</p>
+                    </article>
+                    <article class="fiche-observation">
+                        <p class="fiche-espece">Fiche d'observation</p>
+                        <h3>Les données personnelles</h3>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>Ce que vous partagez en ligne peut être vu, copié ou revendu. En Europe, le
+                            <strong>RGPD</strong> (Règlement général sur la protection des données) protège vos droits.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           5. LE SAC À DOS DE L'EXPLORATEUR (bons réflexes)
+           ----------------------------------------------------------
+           Pour ajouter un réflexe, copiez un bloc <li>…</li> complet.
+           Le compteur se met à jour tout seul (main.js).
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-reflexes">
+                <h2 id="titre-reflexes">Le sac à dos de l'explorateur</h2>
+                <p class="texte">Avant de partir en safari, cochez les bons réflexes que vous emportez avec vous.</p>
+
+                <div class="sac-a-dos">
+                    <!-- TEXTE À REMPLACER -->
+                    <ul class="checklist">
+                        <li><label><input type="checkbox"><span>Je mets à jour mes appareils.</span></label></li>
+                        <li><label><input type="checkbox"><span>J'utilise un mot de passe long et différent pour chaque
+                                    site.</span></label></li>
+                        <li><label><input type="checkbox"><span>J'active la double authentification.</span></label></li>
+                        <li><label><input type="checkbox"><span>Je vérifie l'adresse avant de cliquer sur un
+                                    lien.</span></label></li>
+                        <li><label><input type="checkbox"><span>Je me méfie de ce qui est «&nbsp;trop beau pour être
+                                    vrai&nbsp;».</span></label></li>
+                        <li><label><input type="checkbox"><span>J'évite le Wi-Fi public pour les choses
+                                    sensibles.</span></label></li>
+                    </ul>
+                    <p class="checklist-compteur" aria-live="polite"></p>
+                </div>
+            </section>
+
+
+            <!-- ---------- À retenir ---------- -->
+            <aside class="a-retenir" aria-labelledby="titre-retenir">
+                <h2 id="titre-retenir">À retenir</h2>
+                <!-- TEXTE À REMPLACER -->
+                <ul>
+                    <li>Le cadenas (HTTPS) signifie que vos échanges avec le site sont chiffrés.</li>
+                    <li>Le phishing imite une vraie entreprise : vérifiez l'adresse et ne cliquez pas sur un lien
+                        suspect.</li>
+                    <li>Un bon mot de passe est long et unique ; la double authentification ajoute une deuxième clé.
+                    </li>
+                    <li>En Europe, le RGPD protège vos données personnelles.</li>
+                </ul>
+            </aside>
+
+            <!-- ---------- Navigation entre les sujets ---------- -->
+            <nav class="nav-sujets" aria-label="Navigation entre les sujets">
+                <a class="precedent" href="standards.html">
+                    <small>← Étape précédente</small>
+                    <strong>Les standards du web</strong>
+                </a>
+                <a class="suivant" href="sources.html">
+                    <small>Fin du voyage →</small>
+                    <strong>Les sources</strong>
+                </a>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Prénom Nom et Prénom Nom</p>
+
+            <!-- TEXTE À REMPLACER : votre école et votre cours -->
+            <p>Examen de web design — Nom de l'école — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>La timeline du web — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page -->
+    <meta name="description" content="Les grandes dates de l'histoire du web, expliquées simplement.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-timeline" active les couleurs de la prairie (voir style.css, section 1) -->
+
+<body class="theme-timeline">
+
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html" aria-current="page">Timeline</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="noms-de-domaine.html">Noms de domaine</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ==========================================================
+           INTRODUCTION + PERSONNAGE
+           ========================================================== -->
+            <section class="intro intro-avec-guide">
+                <div>
+                    <span class="intro-surtitre">Étape 1 · La campagne</span>
+                    <h1>La timeline du web</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        Prenons la petite route de campagne et remontons le temps&nbsp;:
+                        de village en village, découvrons les grandes étapes qui ont fait
+                        Internet et le web.
+                    </p>
+                </div>
+
+                <figure class="guide">
+                    <!-- TEXTE À REMPLACER : ce que dit le personnage -->
+                    <p class="bulle">En route&nbsp;! Notre carnet de voyage nous attend.</p>
+                    <img src="images/timeline/campagne.png" alt="" width="300" height="541">
+                </figure>
+            </section>
+
+
+            <!-- ==========================================================
+           INTERNET OU WEB ?
+           ========================================================== -->
+            <section class="section texte" aria-labelledby="titre-difference">
+                <h2 id="titre-difference">Internet ou web&nbsp;?</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p>
+                    On confond souvent les deux. <strong>Internet</strong> est le réseau mondial
+                    qui relie les ordinateurs entre eux. Le <strong>web</strong> est l'un des
+                    services qui l'utilisent&nbsp;: des pages reliées entre elles par des liens.
+                </p>
+                <div class="astuce">
+                    <p>
+                        <strong>Pour se représenter&nbsp;:</strong>
+                        Internet, ce sont les routes de campagne. Le web, ce sont les villages
+                        que l'on visite grâce à elles. L'e-mail, lui, est un autre service qui
+                        emprunte les mêmes routes.
+                    </p>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           LE CARNET DE VOYAGE
+           ----------------------------------------------------------
+           Fonctionnement (géré par main.js) :
+           - chaque étape est un <article class="carnet-page"> ;
+             une seule page est visible à la fois (les autres ont "hidden")
+           - flèches ← →, touches du clavier ou glissement du doigt
+             sur téléphone pour tourner les pages
+           - le chemin du dessus : chaque borne est un bouton qui mène
+             directement à l'étape ; la voiture roule jusqu'à la borne
+           Pour ajouter une étape : copiez un bloc <article> complet ET
+           ajoutez une borne <li> dans le chemin, dans le même ordre.
+           La voiture qui roule sur le chemin : images/timeline/voiture.png
+           Les images sont dans images/timeline/.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-carnet">
+                <h2 id="titre-carnet">Le carnet de voyage</h2>
+                <p class="texte">
+                    Tournez les pages avec les flèches, ou faites glisser votre doigt
+                    sur téléphone. Vous pouvez aussi cliquer sur une borne du chemin.
+                </p>
+
+                <div class="carnet" tabindex="-1">
+
+                    <!-- Le chemin de campagne avec ses bornes -->
+                    <div class="chemin">
+                        <img class="chemin-voyageur" src="images/timeline/voiture.png" alt="" width="360" height="189">
+                        <ol class="chemin-bornes">
+                            <li><button class="chemin-borne" type="button" data-etape="0"
+                                    aria-label="Aller à l'étape 1969">1969</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="1"
+                                    aria-label="Aller à l'étape 1983">1983</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="2"
+                                    aria-label="Aller à l'étape 1991">1991</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="3"
+                                    aria-label="Aller à l'étape 1993">1993</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="4"
+                                    aria-label="Aller à l'étape 1998">1998</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="5"
+                                    aria-label="Aller à l'étape 2004">2004</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="6"
+                                    aria-label="Aller à l'étape 2007">2007</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="7"
+                                    aria-label="Aller à l'étape 2014">2014</button></li>
+                            <li><button class="chemin-borne" type="button" data-etape="8"
+                                    aria-label="Aller à l'étape 2022">2022</button></li>
+                        </ol>
+                    </div>
+
+                    <!-- Le livre -->
+                    <div class="carnet-livre">
+
+                        <!-- Étape 1 : 1969 -->
+                        <article class="carnet-page" aria-label="Étape 1 sur 9 : 1969">
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/1969-arpanet.svg"
+                                        alt="Deux ordinateurs reliés par un câble, avec le personnage au milieu"
+                                        width="480" height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>1969</span></p>
+                                <p class="carnet-categorie" data-categorie="technologie">Technologie</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>ARPANET, le premier réseau</h3>
+                                <p>Deux ordinateurs éloignés (à l'UCLA et à Stanford) échangent un premier message, « LO
+                                    »&nbsp;: les machines peuvent désormais communiquer à distance.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 2 : 1983 -->
+                        <article class="carnet-page" aria-label="Étape 2 sur 9 : 1983" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/1983-tcp-ip.svg"
+                                        alt="Des petits paquets de données voyagent entre deux écrans" width="480"
+                                        height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>1983</span></p>
+                                <p class="carnet-categorie" data-categorie="standard">Standard</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>TCP/IP, une langue commune</h3>
+                                <p>Le 1<sup>er</sup> janvier, tout ARPANET adopte les mêmes règles pour découper les
+                                    données en paquets et les envoyer&nbsp;: c'est la naissance d'Internet tel qu'on le
+                                    connaît.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 3 : 1991 -->
+                        <article class="carnet-page" aria-label="Étape 3 sur 9 : 1991" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/1991-premier-site.svg"
+                                        alt="Un vieil écran affiche le premier site web, à côté des mots HTML, HTTP et URL"
+                                        width="480" height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>1991</span></p>
+                                <p class="carnet-categorie" data-categorie="standard">Standard</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>Le premier site web</h3>
+                                <p>Le web s'ouvre au monde avec ses trois piliers&nbsp;: HTML pour écrire les pages,
+                                    HTTP pour les transmettre et l'URL pour les retrouver.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 4 : 1993 -->
+                        <article class="carnet-page" aria-label="Étape 4 sur 9 : 1993" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/1993-images.svg"
+                                        alt="Un écran affiche une image, le personnage est surpris" width="480"
+                                        height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>1993</span></p>
+                                <p class="carnet-categorie" data-categorie="technologie">Technologie</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>Le web pour tous</h3>
+                                <p>Le CERN offre le web au domaine public, et le navigateur Mosaic affiche images et
+                                    texte ensemble&nbsp;: le grand public découvre le web.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 5 : 1998 -->
+                        <article class="carnet-page" aria-label="Étape 5 sur 9 : 1998" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/1998-recherche.svg"
+                                        alt="Le personnage cherche avec une grande loupe sous une barre de recherche"
+                                        width="480" height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>1998</span></p>
+                                <p class="carnet-categorie" data-categorie="service">Service</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>Google</h3>
+                                <p>Ce moteur de recherche classe les pages selon leur pertinence&nbsp;: trouver une
+                                    information devient beaucoup plus facile.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 6 : 2004 -->
+                        <article class="carnet-page" aria-label="Étape 6 sur 9 : 2004" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/2004-reseaux-sociaux.svg"
+                                        alt="Deux personnages échangent des messages et un cœur" width="480"
+                                        height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>2004</span></p>
+                                <p class="carnet-categorie" data-categorie="service">Service</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>Facebook</h3>
+                                <p>Les réseaux sociaux deviennent un lieu central pour échanger&nbsp;: le web devient
+                                    participatif, c'est le «&nbsp;web 2.0&nbsp;».</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 7 : 2007 -->
+                        <article class="carnet-page" aria-label="Étape 7 sur 9 : 2007" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/2007-smartphone.svg"
+                                        alt="Le personnage tient un grand smartphone" width="480" height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>2007</span></p>
+                                <p class="carnet-categorie" data-categorie="technologie">Technologie</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>L'iPhone</h3>
+                                <p>Le smartphone met Internet dans la poche&nbsp;: on se connecte partout, tout le
+                                    temps.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 8 : 2014 -->
+                        <article class="carnet-page" aria-label="Étape 8 sur 9 : 2014" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/2014-html5.svg"
+                                        alt="Le personnage empile les briques HTML, CSS et JS" width="480" height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>2014</span></p>
+                                <p class="carnet-categorie" data-categorie="standard">Standard</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>HTML5</h3>
+                                <p>Le W3C publie officiellement HTML5&nbsp;: vidéo, son et animations s'intègrent aux
+                                    pages sans module supplémentaire.</p>
+                            </div>
+                        </article>
+
+                        <!-- Étape 9 : 2022 -->
+                        <article class="carnet-page" aria-label="Étape 9 sur 9 : 2022" hidden>
+                            <div class="carnet-gauche">
+                                <figure class="carnet-photo">
+                                    <img src="images/timeline/2022-ia.svg"
+                                        alt="Le personnage discute avec un petit robot" width="480" height="360">
+                                </figure>
+                            </div>
+                            <div class="carnet-droite">
+                                <p class="panneau-date"><span>2022</span></p>
+                                <p class="carnet-categorie" data-categorie="technologie">Technologie</p>
+                                <!-- TEXTE À REMPLACER -->
+                                <h3>ChatGPT</h3>
+                                <p>L'intelligence artificielle générative arrive dans le grand public et change la façon
+                                    de chercher et de créer.</p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- Les commandes -->
+                    <div class="carnet-commandes">
+                        <button class="carnet-fleche carnet-precedent" type="button"
+                            aria-label="Page précédente">←</button>
+                        <p class="carnet-compteur" aria-live="polite">Étape 1 sur 9</p>
+                        <button class="carnet-fleche carnet-suivant" type="button" aria-label="Page suivante">→</button>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           ET AUJOURD'HUI ?
+           ========================================================== -->
+            <section class="section texte" aria-labelledby="titre-aujourdhui">
+                <!-- TEXTE À REMPLACER -->
+                <h2 id="titre-aujourdhui">Et aujourd'hui&nbsp;?</h2>
+                <p>
+                    Texte provisoire : décrivez le web actuel et ses évolutions possibles.
+                </p>
+            </section>
+
+            <!-- ---------- À retenir ---------- -->
+            <aside class="a-retenir" aria-labelledby="titre-retenir">
+                <h2 id="titre-retenir">À retenir</h2>
+                <!-- TEXTE À REMPLACER -->
+                <ul>
+                    <li>Internet est le réseau ; le web est un service qui l'utilise.</li>
+                    <li>TCP/IP (1983) permet aux ordinateurs de parler la même langue.</li>
+                    <li>Le web naît au CERN avec HTML, HTTP et l'URL (1991).</li>
+                    <li>Les grands services (recherche, réseaux sociaux, smartphone, IA) ont changé notre façon
+                        d'utiliser le web.</li>
+                </ul>
+            </aside>
+
+            <!-- ---------- Navigation entre les sujets ---------- -->
+            <nav class="nav-sujets" aria-label="Navigation entre les sujets">
+                <a class="precedent" href="index.html">
+                    <small>← Retour</small>
+                    <strong>Accueil</strong>
+                </a>
+                <a class="suivant" href="url.html">
+                    <small>Étape suivante →</small>
+                    <strong>Les URL</strong>
+                </a>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Prénom Nom et Prénom Nom</p>
+
+            <!-- TEXTE À REMPLACER : votre école et votre cours -->
+            <p>Examen de web design — Nom de l'école — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>

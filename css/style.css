@@ -1,0 +1,4630 @@
+/* =====================================================================
+   SITE DE VEILLE — Feuille de style commune à toutes les pages
+   ---------------------------------------------------------------------
+   Sommaire :
+     1. PALETTE DES COULEURS  ← c'est ici que vous changez les couleurs
+     2. Réglages généraux (police, tailles, espacements)
+     3. Base (remise à zéro, textes, liens, images)
+     4. En-tête et menu (+ menu burger sur téléphone)
+     5. Mise en page du contenu
+     6. Composants communs (cartes, encadrés, boutons…)
+     7. Composants spécifiques à chaque sujet
+     8. Pied de page et bouton « retour en haut »
+     9. Adaptations grands écrans (responsive)
+    10. Accessibilité (mouvements réduits)
+   ===================================================================== */
+
+
+/* =====================================================================
+   1. PALETTE DES COULEURS
+   ---------------------------------------------------------------------
+   Chaque page a sa propre ambiance. Dans le HTML, la balise <body>
+   porte une classe (par ex. <body class="theme-timeline">) qui active
+   le bloc de couleurs correspondant ci-dessous.
+
+   Pour changer une couleur : remplacez simplement le code hexadécimal
+   (#XXXXXX) dans le bloc de la page concernée.
+
+   Rôle de chaque variable :
+     --couleur-fond         → fond général de la page
+     --couleur-surface      → fond des cartes, encadrés, en-tête
+     --couleur-accent       → couleur décorative (bordures, puces, frise)
+     --couleur-accent-fonce → liens, boutons, titres (doit bien contraster
+                              avec le fond pour rester lisible)
+     --couleur-texte        → texte principal
+     --couleur-texte-doux   → texte secondaire (dates, légendes)
+     --couleur-bordure      → traits fins de séparation
+     --couleur-texte-bouton → texte écrit sur un bouton
+   ===================================================================== */
+
+/* --- ACCUEIL : l'espace (bleu foncé pastel) ------------------------ */
+.theme-accueil {
+    --couleur-fond: #2F3B5C;
+    --couleur-surface: #3D4B70;
+    --couleur-accent: #A9C4F5;
+    --couleur-accent-fonce: #C9DAFB;
+    --couleur-texte: #F1F4FB;
+    --couleur-texte-doux: #C3CDE6;
+    --couleur-bordure: #56658C;
+    --couleur-texte-bouton: #2F3B5C;
+}
+
+/* --- TIMELINE : la prairie (vert clair pastel) --------------------- */
+.theme-timeline {
+    --couleur-fond: #E8F5E4;
+    --couleur-surface: #FFFFFF;
+    --couleur-accent: #A8D5A2;
+    --couleur-accent-fonce: #3F6E3E;
+    --couleur-texte: #2B3A2B;
+    --couleur-texte-doux: #5E705D;
+    --couleur-bordure: #CBE5C5;
+    --couleur-texte-bouton: #FFFFFF;
+}
+
+/* --- URL : la ville (gris pastel) ---------------------------------- */
+.theme-url {
+    --couleur-fond: #ECEDEF;
+    --couleur-surface: #FFFFFF;
+    --couleur-accent: #B4BAC4;
+    --couleur-accent-fonce: #4A5260;
+    --couleur-texte: #2A2E35;
+    --couleur-texte-doux: #636A75;
+    --couleur-bordure: #D6D9DE;
+    --couleur-texte-bouton: #FFFFFF;
+}
+
+/* --- NOMS DE DOMAINE : la montagne (beige pastel) ------------------ */
+.theme-domaine {
+    --couleur-fond: #F3ECE0;
+    --couleur-surface: #FFFDF8;
+    --couleur-accent: #D8C4A3;
+    --couleur-accent-fonce: #6E5B3E;
+    --couleur-texte: #3A3226;
+    --couleur-texte-doux: #75684F;
+    --couleur-bordure: #E6DAC6;
+    --couleur-texte-bouton: #FFFFFF;
+}
+
+/* --- STANDARDS DU WEB : la mer (bleu pastel) ----------------------- */
+.theme-standards {
+    --couleur-fond: #E3F2F7;
+    --couleur-surface: #FFFFFF;
+    --couleur-accent: #9DD0E0;
+    --couleur-accent-fonce: #2F6E82;
+    --couleur-texte: #23363D;
+    --couleur-texte-doux: #557079;
+    --couleur-bordure: #C6E4EE;
+    --couleur-texte-bouton: #FFFFFF;
+}
+
+/* --- SÉCURITÉ : la savane (orange pastel) -------------------------- */
+.theme-securite {
+    --couleur-fond: #FBEBDD;
+    --couleur-surface: #FFFAF5;
+    --couleur-accent: #F2BC8D;
+    --couleur-accent-fonce: #9A5420;
+    --couleur-texte: #3D2A1C;
+    --couleur-texte-doux: #7A5D47;
+    --couleur-bordure: #F3D8C0;
+    --couleur-texte-bouton: #FFFFFF;
+}
+
+/* --- SOURCES : la banquise (blanc cassé) --------------------------- */
+.theme-sources {
+    --couleur-fond: #F5F7F8;
+    --couleur-surface: #FFFFFF;
+    --couleur-accent: #CADAE3;
+    --couleur-accent-fonce: #4E6A7C;
+    --couleur-texte: #2A333A;
+    --couleur-texte-doux: #66747E;
+    --couleur-bordure: #E1E8EC;
+    --couleur-texte-bouton: #FFFFFF;
+}
+
+/* --- PAGE URL : couleurs complémentaires ---------------------------
+   Des gris légèrement teintés, pour distinguer les éléments tout en
+   restant dans l'ambiance grise de la ville.                          */
+:root {
+    /* Les quatre parties de l'URL */
+    --url-schema: #D3DCE8;
+    /* gris bleuté */
+    --url-domaine: #D4E3D7;
+    /* gris vert   */
+    --url-chemin: #DFD8E9;
+    /* gris mauve  */
+    --url-parametres: #EADFCF;
+    /* gris sable  */
+
+    /* Les familles de codes HTTP (tampons et cartes à gratter) */
+    --code-info: #E4E6EA;
+    /* 1xx : gris clair  */
+    --code-succes: #D4E3D7;
+    /* 2xx : gris vert   */
+    --code-redirection: #D3DCE8;
+    /* 3xx : gris bleuté */
+    --code-erreur-client: #ECD8D4;
+    /* 4xx : gris rosé   */
+    --code-erreur-serveur: #E3D3DE;
+    /* 5xx : gris prune  */
+
+    /* La couche argentée à gratter */
+    --grattage-couleur: #B7BCC4;
+    --grattage-texte: #5A616C;
+}
+
+/* --- Style « dessiné à la main » (cohérent avec le personnage) ------
+   Contour noir épais et ombre pleine décalée, comme un dessin au feutre. */
+:root {
+    --trait: #2A2E35;
+    /* couleur du contour  */
+    --trait-epaisseur: 3px;
+    /* épaisseur du contour */
+    --ombre-dessin: 4px 4px 0 var(--trait);
+}
+
+
+/* =====================================================================
+   2. RÉGLAGES GÉNÉRAUX
+   ===================================================================== */
+:root {
+    /* Police : "Nunito" est chargée depuis Google Fonts dans le HTML.
+     Si elle ne charge pas, la police du système prend le relais. */
+    --police: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    /* Police « écrite à la main » pour certains titres (page URL) */
+    --police-dessin: "Patrick Hand", "Comic Sans MS", "Nunito", cursive;
+
+    --largeur-max: 1100px;
+    /* largeur maximale du contenu      */
+    --largeur-texte: 70ch;
+    /* longueur de ligne confortable    */
+    --arrondi: 14px;
+    /* coins arrondis des cartes        */
+    --ombre: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --espace: 1.25rem;
+    /* espacement de base               */
+    --hauteur-entete: 64px;
+}
+
+
+/* =====================================================================
+   3. BASE
+   ===================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Évite que les ancres se cachent sous l'en-tête fixe */
+    scroll-padding-top: calc(var(--hauteur-entete) + 1rem);
+}
+
+body {
+    margin: 0;
+    font-family: var(--police);
+    font-size: 1.0625rem;
+    /* 17px : confortable sur téléphone */
+    line-height: 1.65;
+    color: var(--couleur-texte);
+    background-color: var(--couleur-fond);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.25;
+    margin: 0 0 0.75em;
+    color: var(--couleur-texte);
+}
+
+h1 {
+    font-size: clamp(1.9rem, 6vw, 2.8rem);
+}
+
+h2 {
+    font-size: clamp(1.45rem, 4.5vw, 1.9rem);
+    margin-top: 1.8em;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    color: var(--couleur-accent-fonce);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    text-decoration-thickness: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul,
+ol {
+    padding-left: 1.3em;
+}
+
+/* Contour visible quand on navigue au clavier */
+:focus-visible {
+    outline: 3px solid var(--couleur-accent-fonce);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Lien « Aller au contenu » (visible seulement au clavier) */
+.lien-evitement {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    padding: 0.6rem 1rem;
+    background: var(--couleur-accent-fonce);
+    color: var(--couleur-texte-bouton);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.lien-evitement:focus {
+    top: 1rem;
+}
+
+
+/* =====================================================================
+   4. EN-TÊTE ET MENU
+   ===================================================================== */
+.entete {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--couleur-surface);
+    border-bottom: 1px solid var(--couleur-bordure);
+    box-shadow: var(--ombre);
+}
+
+.entete-contenu {
+    max-width: var(--largeur-max);
+    margin: 0 auto;
+    padding: 0 var(--espace);
+    min-height: var(--hauteur-entete);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.15rem;
+    text-decoration: none;
+    color: var(--couleur-texte);
+}
+
+/* Bouton burger (visible seulement sur téléphone) */
+.menu-bouton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--couleur-texte);
+    background: transparent;
+    border: 2px solid var(--couleur-bordure);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.menu-bouton-icone {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+/* Liste des liens du menu : cachée sur téléphone par défaut */
+.menu {
+    display: none;
+    width: 100%;
+}
+
+/* Le JavaScript ajoute la classe "menu-ouvert" à l'en-tête */
+.entete.menu-ouvert .menu {
+    display: block;
+}
+
+.menu-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.menu-liste a {
+    display: block;
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--couleur-texte);
+}
+
+.menu-liste a:hover {
+    background-color: var(--couleur-fond);
+}
+
+/* Lien de la page en cours (aria-current="page" dans le HTML) */
+.menu-liste a[aria-current="page"] {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-texte);
+}
+
+.theme-accueil .menu-liste a[aria-current="page"] {
+    color: var(--couleur-texte-bouton);
+}
+
+
+/* =====================================================================
+   5. MISE EN PAGE DU CONTENU
+   ===================================================================== */
+main {
+    flex: 1;
+    /* pousse le pied de page en bas de l'écran */
+}
+
+.conteneur {
+    max-width: var(--largeur-max);
+    margin: 0 auto;
+    padding: 2rem var(--espace) 3rem;
+}
+
+/* Bloc de texte à largeur confortable pour la lecture */
+.texte {
+    max-width: var(--largeur-texte);
+}
+
+/* Bandeau d'introduction en haut de chaque page */
+.intro {
+    padding: 2.5rem 0 1rem;
+}
+
+.intro-surtitre {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--couleur-texte);
+    background-color: var(--couleur-accent);
+    border-radius: 999px;
+}
+
+.theme-accueil .intro-surtitre {
+    color: var(--couleur-texte-bouton);
+}
+
+.intro-texte {
+    font-size: 1.15rem;
+    color: var(--couleur-texte-doux);
+    max-width: var(--largeur-texte);
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+/* Image avec légende */
+.figure {
+    margin: 1.5rem 0;
+}
+
+.figure img {
+    border-radius: var(--arrondi);
+}
+
+.figure figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--couleur-texte-doux);
+}
+
+/* Emplacement provisoire en attendant vos images */
+.image-provisoire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--couleur-texte-doux);
+    background-color: var(--couleur-surface);
+    border: 2px dashed var(--couleur-accent);
+    border-radius: var(--arrondi);
+}
+
+
+/* =====================================================================
+   6. COMPOSANTS COMMUNS
+   ===================================================================== */
+
+/* --- Cartes (page d'accueil : un sujet par carte) ------------------ */
+.cartes {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espace);
+    margin: 1.5rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carte {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: var(--arrondi);
+    box-shadow: var(--ombre);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.carte:hover {
+    transform: translateY(-4px);
+}
+
+.carte img,
+.carte .image-provisoire {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+}
+
+.carte-contenu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.1rem 1.2rem 1.3rem;
+}
+
+.carte-contenu h3 {
+    margin-bottom: 0.4rem;
+}
+
+.carte-contenu p {
+    color: var(--couleur-texte-doux);
+    flex: 1;
+}
+
+/* --- Boutons ------------------------------------------------------- */
+.bouton {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.6rem 1.2rem;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.bouton:hover {
+    filter: brightness(1.1);
+}
+
+/* --- Encadré « À retenir » ----------------------------------------- */
+.a-retenir {
+    margin: 2rem 0;
+    padding: 1.25rem 1.4rem;
+    background-color: var(--couleur-surface);
+    border-left: 6px solid var(--couleur-accent);
+    border-radius: var(--arrondi);
+    box-shadow: var(--ombre);
+}
+
+.a-retenir h2,
+.a-retenir h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.a-retenir ul {
+    margin: 0;
+}
+
+/* --- Encadré d'analogie / astuce ----------------------------------- */
+.astuce {
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem;
+    background-color: var(--couleur-surface);
+    border: 2px dashed var(--couleur-accent);
+    border-radius: var(--arrondi);
+}
+
+/* --- Tableau ------------------------------------------------------- */
+.tableau-conteneur {
+    overflow-x: auto;
+    /* le tableau défile sur petit écran */
+    margin: 1.5rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--couleur-surface);
+    border-radius: var(--arrondi);
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--couleur-bordure);
+}
+
+th {
+    background-color: var(--couleur-accent);
+}
+
+/* --- Navigation « sujet précédent / suivant » ---------------------- */
+.nav-sujets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--couleur-bordure);
+}
+
+.nav-sujets a {
+    display: block;
+    padding: 0.9rem 1.1rem;
+    text-decoration: none;
+    background-color: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: var(--arrondi);
+}
+
+.nav-sujets small {
+    display: block;
+    color: var(--couleur-texte-doux);
+}
+
+.nav-sujets strong {
+    color: var(--couleur-accent-fonce);
+}
+
+.nav-sujets .suivant {
+    text-align: right;
+}
+
+
+/* =====================================================================
+   7. COMPOSANTS SPÉCIFIQUES À CHAQUE SUJET
+   ===================================================================== */
+
+/* =====================================================================
+   PAGE ACCUEIL — l'espace
+   ---------------------------------------------------------------------
+     a. La planète et la voiture qui en fait le tour
+     b. Les cartes postales du voyage
+   ===================================================================== */
+
+/* Couleurs et réglages propres à l'accueil : changez-les ici */
+.theme-accueil {
+    --planete-mer: #9DD0E0;
+    --planete-terre: #A8D5A2;
+    --planete-halo: rgba(169, 196, 245, 0.22);
+    /* lueur douce autour de la Terre */
+    --anneau-couleur: rgba(201, 218, 251, 0.45);
+    /* anneau transparent autour de la planète */
+}
+
+/* --- a. La planète --------------------------------------------------- */
+.intro-accueil {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+
+.planete-scene {
+    position: relative;
+    width: min(340px, 82vw);
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    overflow: hidden;
+    /* l'orbite qui tourne ne dépasse jamais de l'écran */
+}
+
+.planete {
+    position: absolute;
+    inset: 19%;
+    /* la planète occupe le centre de la scène */
+    width: 62%;
+    height: 62%;
+    overflow: visible;
+}
+
+/* Le halo lumineux autour de la Terre : un vrai cercle, sans bords carrés */
+.planete-anneau::before {
+    content: "";
+    position: absolute;
+    inset: 15%;
+    z-index: 0;
+    background: radial-gradient(circle, var(--planete-halo) 0 55%, transparent 72%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.planete-mer {
+    fill: var(--planete-mer);
+}
+
+.planete-continents-fixes path {
+    fill: var(--planete-terre);
+    stroke: var(--trait);
+    stroke-width: 4;
+    stroke-linejoin: round;
+}
+
+.planete-nuage {
+    fill: #FFFFFF;
+    stroke: var(--trait);
+    stroke-width: 3;
+    stroke-linejoin: round;
+    opacity: 0.9;
+}
+
+.planete-reflet {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 6;
+    stroke-linecap: round;
+    opacity: 0.7;
+}
+
+.planete-contour {
+    fill: none;
+    stroke: var(--trait);
+    stroke-width: 6;
+}
+
+/* La planète, son anneau et la voiture (la planète est un bouton) */
+.planete-bloc {
+    text-align: center;
+}
+
+.planete-anneau {
+    display: block;
+    padding: 0;
+    font: inherit;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.planete-anneau:hover .planete {
+    transform: scale(1.03);
+}
+
+.planete-anneau .planete {
+    transition: transform 0.3s ease;
+}
+
+.planete-indice {
+    margin: 0.4rem 0 0;
+    font-family: var(--police-dessin);
+    font-size: 1.15rem;
+    color: var(--couleur-texte-doux);
+}
+
+.planete-anneau .planete {
+    z-index: 2;
+}
+
+.anneau {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.anneau path {
+    fill: none;
+    stroke: var(--anneau-couleur);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 2 14;
+    /* une route en pointillés, légère et transparente */
+    vector-effect: non-scaling-stroke;
+}
+
+.anneau-arriere {
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.anneau-avant {
+    z-index: 3;
+}
+
+/* La voiture : main.js la place sur l'anneau à chaque image */
+.anneau-voiture {
+    position: absolute;
+    left: 50%;
+    top: 72%;
+    width: 22%;
+    transform: translate(-50%, -80%);
+    z-index: 4;
+    filter: drop-shadow(0 3px 0 rgba(42, 46, 53, 0.35));
+    will-change: left, top, transform;
+    pointer-events: none;
+}
+
+/* --- b. Les cartes postales du voyage -------------------------------- */
+.cartes-postales .carte {
+    border: var(--trait-epaisseur) solid var(--trait);
+    box-shadow: 5px 5px 0 var(--trait);
+}
+
+.cartes-postales .carte:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.cartes-postales .carte:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.cartes-postales .carte:hover {
+    transform: rotate(0) translateY(-5px);
+}
+
+/* Le paysage de la carte : le décor de la page, en version nette */
+.carte-paysage {
+    --paysage-ciel: #FFFFFF;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background-color: var(--paysage-ciel);
+    background-position: center bottom;
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    border-bottom: var(--trait-epaisseur) solid var(--trait);
+    overflow: hidden;
+}
+
+.carte[data-etape="timeline"] .carte-paysage {
+    --paysage-ciel: #E8F5E4;
+    background-image: url("../images/timeline/fond-campagne.svg");
+}
+
+.carte[data-etape="url"] .carte-paysage {
+    --paysage-ciel: #ECEDEF;
+    background-image: url("../images/url/fond-ville.svg");
+}
+
+.carte[data-etape="domaine"] .carte-paysage {
+    --paysage-ciel: #F3ECE0;
+    background-image: url("../images/noms-de-domaine/fond-montagne.svg");
+}
+
+.carte[data-etape="standards"] .carte-paysage {
+    --paysage-ciel: #E3F2F7;
+    background-image: url("../images/standards/fond-mer.svg");
+}
+
+.carte[data-etape="securite"] .carte-paysage {
+    --paysage-ciel: #FBEBDD;
+    background-image: url("../images/securite/fond-savane.svg");
+}
+
+/* Le personnage, dans la tenue de l'étape
+   (.carte .carte-voyageur annule le recadrage des anciennes images de carte) */
+.carte .carte-voyageur {
+    aspect-ratio: auto;
+    object-fit: contain;
+    border-radius: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    height: 74%;
+    width: auto;
+    transform: translateX(-50%);
+    transition: transform 0.25s ease;
+}
+
+.carte:hover .carte-voyageur.carte-voyageur {
+    transform: translateX(-50%) translateY(-6px) rotate(-3deg);
+}
+
+/* Le petit tampon de l'étape au-dessus du titre */
+.carte-contenu .carte-etape {
+    flex: none;
+    display: inline-block;
+    align-self: flex-start;
+    margin: 0 0 0.4rem;
+    padding: 0.05rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent);
+    border-radius: 999px;
+}
+
+.cartes-postales .carte-contenu h3 {
+    font-family: var(--police-dessin);
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+@media (min-width: 900px) {
+    .intro-accueil {
+        grid-template-columns: 1.2fr 1fr;
+    }
+
+    .planete-scene {
+        width: 380px;
+    }
+}
+
+
+/* =====================================================================
+   PAGE TIMELINE — le carnet de voyage à la campagne
+   ---------------------------------------------------------------------
+   Même style « dessiné à la main » que la page URL (contours noirs,
+   ombres pleines). Le personnage et sa bulle utilisent les classes
+   .guide et .bulle, définies plus bas dans la partie PAGE URL.
+     a. Le chemin et ses bornes
+     b. Le livre (pages, photo, panneau de village)
+     c. Les flèches et le compteur
+     d. Les animations de page
+   ===================================================================== */
+
+/* Couleurs propres au carnet : changez-les ici */
+.theme-timeline {
+    --carnet-papier: #FFFDF6;
+    /* fond des pages (papier crème) */
+    --carnet-chemin: #EAD9B5;
+    /* couleur du chemin de terre    */
+    --carnet-scotch: rgba(243, 227, 195, 0.9);
+    /* ruban adhésif sur la photo */
+    --cat-technologie: #CBE5C5;
+    /* étiquette « Technologie »     */
+    --cat-standard: #F3E3C3;
+    /* étiquette « Standard »        */
+    --cat-service: #E4E6EA;
+    /* étiquette « Service »         */
+}
+
+.carnet {
+    max-width: 940px;
+    margin: 1.5rem auto 0;
+    outline: none;
+}
+
+/* --- a. Le chemin et ses bornes ------------------------------------ */
+.chemin {
+    position: relative;
+    padding-top: 52px;
+    /* place pour la voiture qui roule */
+    margin-bottom: 1.4rem;
+}
+
+/* Le chemin de terre */
+.chemin::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    height: 22px;
+    background-color: var(--carnet-chemin);
+    background-image: repeating-linear-gradient(90deg, transparent 0 14px, rgba(255, 255, 255, 0.7) 14px 26px);
+    background-size: 100% 4px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 999px;
+}
+
+.chemin-bornes {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 0.3rem;
+    list-style: none;
+}
+
+/* Chaque borne est un bouton en forme de borne kilométrique */
+.chemin-borne {
+    width: 2.3rem;
+    height: 2.5rem;
+    padding: 0.55rem 0 0;
+    font-family: var(--police-dessin);
+    font-size: 0.78rem;
+    line-height: 1;
+    color: var(--trait);
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 14px 14px 4px 4px;
+    box-shadow: inset 0 8px 0 var(--couleur-accent);
+    /* le « chapeau » vert */
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.chemin-borne:hover {
+    transform: translateY(-3px);
+}
+
+/* Bornes déjà passées */
+.chemin-borne.passee {
+    background-color: var(--couleur-fond);
+}
+
+/* Borne de l'étape en cours */
+.chemin-borne[aria-current="step"] {
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+    box-shadow: inset 0 8px 0 var(--trait);
+    transform: translateY(-4px);
+}
+
+/* La voiture qui roule sur le chemin */
+.chemin-voyageur {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 78px;
+    height: auto;
+    transform: translateX(-50%);
+    transition: left 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+/* Quand on revient en arrière, la voiture fait demi-tour */
+.chemin-voyageur.marche-arriere {
+    transform: translateX(-50%) scaleX(-1);
+}
+
+/* Petits cahots de la route pendant que la voiture roule */
+.chemin-voyageur.en-marche {
+    animation: voiture-cahots 0.2s ease-in-out 4;
+}
+
+@keyframes voiture-cahots {
+
+    0%,
+    100% {
+        translate: 0 0;
+        rotate: 0deg;
+    }
+
+    50% {
+        translate: 0 -3px;
+        rotate: -2deg;
+    }
+}
+
+/* --- b. Le livre ---------------------------------------------------- */
+.carnet-livre {
+    position: relative;
+    background-color: var(--carnet-papier);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: 6px 6px 0 var(--trait);
+    perspective: 1600px;
+    touch-action: pan-y;
+    /* le doigt peut faire défiler la page verticalement */
+    overflow: hidden;
+}
+
+.carnet-page {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.carnet-page[hidden] {
+    display: none;
+}
+
+.carnet-gauche {
+    padding: 1.4rem 1.4rem 0.4rem;
+}
+
+/* La photo collée dans le carnet (style polaroid + ruban adhésif) */
+.carnet-photo {
+    position: relative;
+    margin: 0.4rem auto 0;
+    max-width: 420px;
+    padding: 10px 10px 28px;
+    background-color: #FFFFFF;
+    border: 2px solid var(--trait);
+    border-radius: 6px;
+    box-shadow: 3px 3px 0 var(--trait);
+    transform: rotate(-2deg);
+}
+
+.carnet-photo::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 90px;
+    height: 24px;
+    background-color: var(--carnet-scotch);
+    border: 1px solid rgba(42, 46, 53, 0.25);
+    transform: translateX(-50%) rotate(3deg);
+}
+
+.carnet-photo img {
+    width: 100%;
+    border: 2px solid var(--trait);
+    border-radius: 4px;
+}
+
+/* Page de droite : papier ligné.
+   La date, la catégorie et le titre sont centrés ; le paragraphe reste
+   aligné à gauche pour être plus facile à lire. */
+.carnet-droite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.2rem 1.5rem 1.6rem;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 31px, var(--couleur-bordure) 31px 32px);
+    background-position: 0 14px;
+}
+
+.carnet-droite h3 {
+    margin: 0.3rem 0 0.4rem;
+    font-family: var(--police-dessin);
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.carnet-droite p:last-child {
+    margin-bottom: 0;
+    align-self: stretch;
+    text-align: left;
+}
+
+/* La date, présentée comme un panneau d'entrée de village */
+.panneau-date {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 0.6rem;
+    padding-bottom: 20px;
+}
+
+.panneau-date span {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0.1rem 1.2rem;
+    font-family: var(--police-dessin);
+    font-size: 2.3rem;
+    line-height: 1.2;
+    background-color: #FFFFFF;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 4px #FFFFFF, inset 0 0 0 7px var(--couleur-accent), 3px 3px 0 var(--trait);
+}
+
+/* Les deux poteaux du panneau */
+.panneau-date::before,
+.panneau-date::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 6px;
+    height: 30px;
+    background-color: var(--trait);
+    border-radius: 3px;
+}
+
+.panneau-date::before {
+    left: 28%;
+}
+
+.panneau-date::after {
+    right: 28%;
+}
+
+/* Étiquette de catégorie : Technologie, Standard ou Service
+   (sur sa propre ligne, centrée sous le panneau de la date) */
+.carnet-categorie {
+    display: inline-block;
+    margin: 0.4rem 0 0.6rem;
+    padding: 0.15rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background-color: var(--cat-service);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+.carnet-categorie[data-categorie="technologie"] {
+    background-color: var(--cat-technologie);
+}
+
+.carnet-categorie[data-categorie="standard"] {
+    background-color: var(--cat-standard);
+}
+
+.carnet-categorie[data-categorie="service"] {
+    background-color: var(--cat-service);
+}
+
+/* --- c. Les flèches et le compteur ---------------------------------- */
+.carnet-commandes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1.4rem;
+}
+
+.carnet-fleche {
+    width: 3.2rem;
+    height: 3.2rem;
+    font: inherit;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--trait);
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 50%;
+    box-shadow: 3px 3px 0 var(--trait);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.carnet-fleche:hover:not(:disabled) {
+    transform: translate(-1px, -2px);
+    box-shadow: 4px 5px 0 var(--trait);
+}
+
+.carnet-fleche:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--trait);
+}
+
+.carnet-fleche:disabled {
+    opacity: 0.35;
+    box-shadow: none;
+    cursor: default;
+}
+
+.carnet-compteur {
+    min-width: 8rem;
+    margin: 0;
+    font-family: var(--police-dessin);
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+/* --- d. Les animations de page --------------------------------------
+   Sur téléphone, la nouvelle page glisse depuis le côté.
+   Sur grand écran (plus bas, section 9), elle se tourne comme
+   une vraie page de livre.                                            */
+.carnet-page.tourne-suivant {
+    animation: carnet-glisse-droite 0.45s ease-out;
+}
+
+.carnet-page.tourne-precedent {
+    animation: carnet-glisse-gauche 0.45s ease-out;
+}
+
+@keyframes carnet-glisse-droite {
+    from {
+        opacity: 0;
+        transform: translateX(40px) rotate(1deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes carnet-glisse-gauche {
+    from {
+        opacity: 0;
+        transform: translateX(-40px) rotate(-1deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes carnet-tourne-gauche {
+    from {
+        transform: rotateY(95deg);
+        filter: brightness(0.85);
+    }
+
+    to {
+        transform: rotateY(0);
+        filter: none;
+    }
+}
+
+@keyframes carnet-tourne-droite {
+    from {
+        transform: rotateY(-95deg);
+        filter: brightness(0.85);
+    }
+
+    to {
+        transform: rotateY(0);
+        filter: none;
+    }
+}
+
+
+/* =====================================================================
+   PAGE NOMS DE DOMAINE — la montagne
+   ---------------------------------------------------------------------
+   Même style « dessiné à la main » que les pages URL et Timeline.
+     a. Bouton dessiné (réutilisable sur toutes les pages)
+     b. Les cartes « Maman = numéro » à retourner
+     c. Le voyage d'une adresse sur la montagne (DNS)
+     d. Le panneau en bois (anecdote)
+     e. Le memory des extensions
+   ===================================================================== */
+
+/* Couleurs propres à la page : changez-les ici */
+.theme-domaine {
+    --memo-generique: #E6D3B0;
+    /* dos des cartes « numéro »          */
+    --memo-nationale: #C8DFC3;
+    /* message « Bravo » et icône Maman   */
+
+    /* Memory : une couleur par paire (les deux cartes d'une paire
+     ont la même couleur). Beiges et verts, en alternance. */
+    --paire-com: #E6D3B0;
+    /* .com  : sable          */
+    --paire-net: #D3E4C6;
+    /* .net  : vert sauge     */
+    --paire-org: #F1E5CC;
+    /* .org  : crème          */
+    --paire-info: #BCD7B4;
+    /* .info : vert tendre    */
+    --paire-biz: #D9C29C;
+    /* .biz  : caramel clair  */
+    --paire-name: #E4ECD3;
+    /* .name : vert très pâle */
+    --paire-pro: #EBD6BF;
+    /* .pro  : beige rosé     */
+    --paire-be: #A9CBA0;
+    /* .be   : vert prairie   */
+    --bois: #C9A27A;
+    /* panneau en bois                    */
+    --bois-fonce: #A77F57;
+    /* veines du bois                     */
+    --drapeau: #E58F7A;
+    /* drapeau planté au sommet           */
+}
+
+/* --- a. Bouton dessiné ---------------------------------------------- */
+.bouton-dessin {
+    padding: 0.5rem 1.3rem;
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    color: var(--trait);
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--trait);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.bouton-dessin:hover {
+    transform: translate(-1px, -2px);
+    box-shadow: 4px 5px 0 var(--trait);
+}
+
+.bouton-dessin:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--trait);
+}
+
+/* --- b. Les cartes à retourner -------------------------------------- */
+.traduction {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 1.4rem;
+    margin: 1.8rem 0 1rem;
+    perspective: 1200px;
+}
+
+.traduction-carte {
+    position: relative;
+    width: 250px;
+    height: 170px;
+    padding: 0;
+    font: inherit;
+    color: var(--trait);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
+.traduction-carte.retournee {
+    transform: rotateY(180deg);
+}
+
+.traduction-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 1rem;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.traduction-avant {
+    background-color: var(--couleur-surface);
+}
+
+.traduction-arriere {
+    background-color: var(--memo-generique);
+    transform: rotateY(180deg);
+}
+
+.traduction-face strong {
+    font-family: var(--police-dessin);
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.traduction-etiquette {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--couleur-texte-doux);
+}
+
+.traduction-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1.6rem;
+    background-color: var(--memo-nationale);
+    border: 2px solid var(--trait);
+    border-radius: 50%;
+}
+
+.traduction-barre {
+    padding: 0.2rem 1rem;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+.traduction-face .traduction-numero {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.traduction-egal {
+    font-family: var(--police-dessin);
+    font-size: 2.6rem;
+}
+
+.traduction-commande {
+    text-align: center;
+}
+
+/* --- c. Le voyage d'une adresse ------------------------------------- */
+.dns-voyage {
+    display: grid;
+    gap: 1.4rem;
+    margin-top: 1.5rem;
+}
+
+.dns-montagne {
+    position: relative;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+    overflow: hidden;
+}
+
+.dns-decor {
+    width: 100%;
+}
+
+/* Les 4 stations sur le sentier */
+.dns-station {
+    position: absolute;
+    width: 2.3rem;
+    height: 2.3rem;
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--trait);
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.dns-station.atteinte {
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+}
+
+/* La station en cours clignote doucement */
+.dns-station[aria-current="step"] {
+    animation: station-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes station-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(110, 91, 62, 0.45);
+    }
+
+    50% {
+        box-shadow: 0 0 0 9px rgba(110, 91, 62, 0);
+    }
+}
+
+/* Le personnage qui grimpe (ses pieds se posent juste à côté de la station) */
+.dns-randonneur {
+    position: absolute;
+    width: 8%;
+    margin-left: 4.5%;
+    transform: translate(-50%, -90%);
+    transition: left 0.8s ease-in-out, top 0.8s ease-in-out;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Le drapeau planté au sommet (dessiné en CSS) */
+.dns-drapeau {
+    position: absolute;
+    left: 52.5%;
+    top: 19%;
+    width: 4px;
+    height: 13%;
+    background-color: var(--trait);
+    transform: translate(-200%, -100%) scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease 0.7s;
+    z-index: 1;
+}
+
+.dns-drapeau::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 4px;
+    width: 2.2rem;
+    height: 1.5rem;
+    background-color: var(--drapeau);
+    border: 2px solid var(--trait);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.dns-drapeau.visible {
+    transform: translate(-200%, -100%) scaleY(1);
+}
+
+.dns-panneau {
+    padding: 1.3rem 1.4rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.dns-fiche h3 {
+    margin-bottom: 0.4rem;
+    font-family: var(--police-dessin);
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.dns-fiche:not([hidden]) {
+    animation: fiche-apparition 0.35s ease-out;
+}
+
+.dns-fiche-numero {
+    margin: 0 0 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--couleur-texte-doux);
+}
+
+.dns-commandes {
+    margin: 1rem 0 0;
+}
+
+/* Petits bouts de code dans le texte de la page */
+.theme-domaine code {
+    padding: 0.05rem 0.35rem;
+    font-size: 0.92em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--couleur-accent);
+    border-radius: 5px;
+}
+
+/* --- d. Le panneau en bois ------------------------------------------ */
+.location {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+
+.panneau-bois {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto 2.2rem;
+    padding: 1rem 1.3rem;
+    color: #2A2E35;
+    background-color: var(--bois);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 22px, var(--bois-fonce) 22px 24px);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 10px;
+    box-shadow: var(--ombre-dessin);
+    transform: rotate(-2deg);
+}
+
+/* Le poteau du panneau */
+.panneau-bois::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2.2rem;
+    width: 12px;
+    height: 2.2rem;
+    background-color: var(--bois-fonce);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-top: none;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.panneau-bois p {
+    position: relative;
+    margin: 0;
+    padding: 0.4rem 0.6rem;
+    background-color: rgba(255, 253, 248, 0.85);
+    border-radius: 6px;
+}
+
+.panneau-bois .panneau-bois-titre {
+    margin-bottom: 0.5rem;
+    font-family: var(--police-dessin);
+    font-size: 1.4rem;
+    text-align: center;
+    background: none;
+}
+
+/* --- e. Le memory des extensions ------------------------------------ */
+.memo-grille {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+    max-width: 640px;
+    margin: 1.2rem auto;
+    perspective: 1200px;
+}
+
+.memo-carte {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    /* les cartes gardent toujours la même forme */
+    padding: 0;
+    font: inherit;
+    color: var(--trait);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.45s ease;
+}
+
+.memo-carte.retournee,
+.memo-carte.trouvee {
+    transform: rotateY(180deg);
+}
+
+.memo-dos,
+.memo-face {
+    position: absolute;
+    inset: 0;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--trait);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.memo-dos {
+    background: url("../images/noms-de-domaine/dos-carte.svg") center / cover;
+}
+
+.memo-carte:hover:not(.retournee):not(.trouvee) .memo-dos {
+    filter: brightness(1.06);
+}
+
+.memo-face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+    text-align: center;
+    line-height: 1.2;
+    background-color: var(--memo-generique);
+    transform: rotateY(180deg);
+}
+
+/* Couleur de chaque paire (voir les variables --paire-… plus haut) */
+.memo-carte[data-paire="com"] .memo-face {
+    background-color: var(--paire-com);
+}
+
+.memo-carte[data-paire="net"] .memo-face {
+    background-color: var(--paire-net);
+}
+
+.memo-carte[data-paire="org"] .memo-face {
+    background-color: var(--paire-org);
+}
+
+.memo-carte[data-paire="info"] .memo-face {
+    background-color: var(--paire-info);
+}
+
+.memo-carte[data-paire="biz"] .memo-face {
+    background-color: var(--paire-biz);
+}
+
+.memo-carte[data-paire="name"] .memo-face {
+    background-color: var(--paire-name);
+}
+
+.memo-carte[data-paire="pro"] .memo-face {
+    background-color: var(--paire-pro);
+}
+
+.memo-carte[data-paire="be"] .memo-face {
+    background-color: var(--paire-be);
+}
+
+.memo-extension {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: clamp(1rem, 4.5vw, 1.6rem);
+    font-weight: 800;
+}
+
+.memo-sens {
+    font-size: clamp(0.7rem, 2.8vw, 1rem);
+    font-weight: 700;
+    hyphens: auto;
+}
+
+.memo-sens small {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--couleur-texte-doux);
+}
+
+/* Paire trouvée : un petit drapeau est planté sur la carte */
+.memo-carte.trouvee .memo-face::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    width: 14px;
+    height: 10px;
+    background-color: var(--drapeau);
+    border: 2px solid var(--trait);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    box-shadow: -3px 0 0 var(--trait);
+}
+
+.memo-carte.trouvee .memo-face {
+    animation: memo-trouvee 0.5s ease 0.45s;
+}
+
+@keyframes memo-trouvee {
+    50% {
+        transform: rotateY(180deg) scale(1.08);
+    }
+}
+
+.memo-score {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem 1.4rem;
+}
+
+.memo-compteur {
+    margin: 0;
+    font-family: var(--police-dessin);
+    font-size: 1.3rem;
+}
+
+.memo-bravo {
+    margin: 1rem auto 0;
+    max-width: 30rem;
+    padding: 0.7rem 1rem;
+    font-family: var(--police-dessin);
+    font-size: 1.4rem;
+    text-align: center;
+    background-color: var(--memo-nationale);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 14px;
+    box-shadow: var(--ombre-dessin);
+}
+
+/* Étiquettes des extensions thématiques, en version dessinée */
+.etiquettes-dessin li {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: 0.92rem;
+    border: 2px solid var(--trait);
+}
+
+.etiquettes-dessin li:nth-child(3n + 2) {
+    transform: rotate(-2deg);
+}
+
+.etiquettes-dessin li:nth-child(3n) {
+    transform: rotate(2deg);
+}
+
+/* Sur grand écran : montagne et panneau côte à côte */
+@media (min-width: 900px) {
+    .dns-voyage {
+        grid-template-columns: 1.7fr 1fr;
+        align-items: center;
+    }
+
+    .location {
+        grid-template-columns: 1.4fr 1fr;
+    }
+
+    .dns-station {
+        width: 2.8rem;
+        height: 2.8rem;
+        font-size: 1.4rem;
+    }
+}
+
+/* Sur petit téléphone : stations un peu plus petites */
+@media (max-width: 420px) {
+    .dns-station {
+        width: 1.9rem;
+        height: 1.9rem;
+        font-size: 1rem;
+    }
+
+    .traduction-carte {
+        width: 100%;
+        max-width: 280px;
+        height: 150px;
+    }
+
+    .traduction-egal {
+        transform: rotate(90deg);
+    }
+}
+
+
+/* =====================================================================
+   PAGE STANDARDS DU WEB — la mer
+   ---------------------------------------------------------------------
+   Même style « dessiné à la main » que les autres pages.
+     a. La mini-page web (utilisée sur les îles et dans le chantier)
+     b. La bouteille à la mer et la barre du bateau
+     c. Les îles, avec l'affichage « cassé » sans standards
+     d. Les phares
+     e. Construis ton bateau
+     f. Les encadrés HTTP et accessibilité (bouée)
+   ===================================================================== */
+
+/* Couleurs propres à la page : changez-les ici */
+.theme-standards {
+    --mer-ciel: #EAF6FA;
+    /* ciel au-dessus de la mer        */
+    --mer-eau: #9DD0E0;
+    /* l'eau                            */
+    --mer-sable: #F3E3C3;
+    /* le sable, la voile beige         */
+    --mer-corail: #E58F7A;
+    /* bouée, drapeau, coque peinte     */
+    --mer-verre: rgba(157, 208, 224, 0.55);
+    /* verre de la bouteille */
+}
+
+/* --- a. La mini-page web -------------------------------------------- */
+.mini-navigateur {
+    background-color: #FFFFFF;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--trait);
+}
+
+/* La barre du navigateur avec ses trois petits ronds */
+.mini-barre {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    padding: 6px 10px;
+    background-color: var(--couleur-bordure);
+    border-bottom: 2px solid var(--trait);
+    border-radius: 9px 9px 0 0;
+}
+
+.mini-barre span {
+    width: 9px;
+    height: 9px;
+    background-color: #FFFFFF;
+    border: 1.5px solid var(--trait);
+    border-radius: 50%;
+}
+
+.mini-page {
+    padding: 0.8rem 0.9rem 1rem;
+}
+
+.mini-page>* {
+    transition: all 0.5s ease;
+}
+
+.mini-titre {
+    margin: 0 0 0.5rem;
+    font-family: var(--police-dessin);
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: var(--couleur-accent-fonce);
+}
+
+.mini-image {
+    position: relative;
+    height: 64px;
+    margin-bottom: 0.6rem;
+    background: linear-gradient(to bottom, var(--mer-ciel) 55%, var(--mer-eau) 55%);
+    border: 2px solid var(--trait);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mini-soleil {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--mer-sable);
+    border: 2px solid var(--trait);
+    border-radius: 50%;
+}
+
+.mini-vague {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    height: 6px;
+    background: radial-gradient(circle at 6px 0, transparent 5px, #FFFFFF 5px 7px, transparent 7px) 0 0 / 14px 6px repeat-x;
+}
+
+.mini-texte {
+    margin: 0 0 0.7rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.mini-bouton {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: var(--couleur-accent-fonce);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+/* --- b. La bouteille et la barre du bateau ---------------------------- */
+.bouteille-commande {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem 1.6rem;
+    margin: 1.5rem 0 1rem;
+}
+
+/* La bouteille, dessinée en CSS */
+.bouteille,
+.encadre-bouteille {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 62px;
+    margin-top: 16px;
+    background-color: var(--mer-verre);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 12px 12px 14px 14px;
+}
+
+/* Le goulot et son bouchon */
+.bouteille::before,
+.encadre-bouteille::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -18px;
+    width: 14px;
+    height: 16px;
+    background-color: #C9A27A;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 4px;
+    transform: translateX(-50%);
+}
+
+/* Le message roulé à l'intérieur */
+.bouteille::after,
+.encadre-bouteille::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: 12px;
+    bottom: 12px;
+    background-color: #FFFDF6;
+    border: 2px solid var(--trait);
+    border-radius: 4px;
+    transform: rotate(-8deg);
+}
+
+.bouteille {
+    animation: bouteille-flotte 3s ease-in-out infinite;
+}
+
+@keyframes bouteille-flotte {
+
+    0%,
+    100% {
+        transform: rotate(-12deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(10deg) translateY(-6px);
+    }
+}
+
+/* La barre : deux choix de part et d'autre d'une roue de bateau */
+.barre-bateau {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 999px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.barre-option {
+    padding: 0.45rem 1rem;
+    font-family: var(--police-dessin);
+    font-size: 1.15rem;
+    color: var(--trait);
+    background: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.barre-option[aria-pressed="true"] {
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+}
+
+.barre-roue {
+    font-size: 1.7rem;
+    line-height: 1;
+    transition: transform 0.6s ease;
+}
+
+.bouteille-jeu[data-mode="avec"] .barre-roue {
+    transform: rotate(180deg);
+}
+
+.bouteille-message {
+    max-width: 42rem;
+    margin: 0 auto 1.4rem;
+    padding: 0.8rem 1.1rem;
+    text-align: center;
+    background-color: var(--couleur-surface);
+    border: 2px dashed var(--trait);
+    border-radius: 12px;
+}
+
+/* --- c. Les îles ------------------------------------------------------ */
+.iles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+}
+
+.ile {
+    padding-bottom: 1rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+    overflow: hidden;
+}
+
+.ile-decor {
+    width: 100%;
+    border-bottom: var(--trait-epaisseur) solid var(--trait);
+}
+
+.ile-nom {
+    margin: 0.6rem 0;
+    font-family: var(--police-dessin);
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.ile .mini-navigateur {
+    margin: 0 1rem;
+}
+
+/* Petite éclaboussure quand la bouteille arrive (classe ajoutée par main.js) */
+.ile.arrivee .mini-navigateur {
+    animation: ile-arrivee 0.5s ease;
+}
+
+@keyframes ile-arrivee {
+    30% {
+        transform: translateY(-6px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translateY(2px) rotate(1deg);
+    }
+}
+
+/* ---- Affichage « cassé » quand il n'y a pas de standards ----
+   Chaque île casse la page à sa manière.                         */
+
+/* Île 1 : titre dans une vieille police, image introuvable, bouton qui dépasse */
+.bouteille-jeu[data-mode="sans"] .ile-un .mini-titre {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.9rem;
+    color: #000000;
+    text-decoration: underline;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-un .mini-image {
+    background: #FFFFFF;
+    border: 2px dashed #9A9A9A;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-un .mini-image>* {
+    display: none;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-un .mini-image::after {
+    content: "✕ image introuvable";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 0.85rem;
+    color: #9A9A9A;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-un .mini-bouton {
+    width: 135%;
+    color: #000000;
+    background-color: #D9D9D9;
+    border-radius: 0;
+}
+
+/* Île 2 : tout est de travers et les couleurs sont fausses */
+.bouteille-jeu[data-mode="sans"] .ile-deux .mini-titre {
+    color: #8DBF3F;
+    transform: rotate(-7deg) translateX(18px);
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-deux .mini-image {
+    height: 34px;
+    filter: hue-rotate(150deg) saturate(2.5);
+    transform: translateX(-14px);
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-deux .mini-texte {
+    margin-top: -1.6rem;
+    color: #E5A2C4;
+    letter-spacing: 3px;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-deux .mini-bouton {
+    color: #8DBF3F;
+    background-color: #FFF59C;
+    transform: translateX(70px) rotate(8deg);
+}
+
+/* Île 3 : les tailles n'ont plus aucun sens et le bouton a disparu */
+.bouteille-jeu[data-mode="sans"] .ile-trois .mini-titre {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    text-align: right;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-trois .mini-image {
+    height: 130px;
+    border-radius: 0;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-trois .mini-texte {
+    font-family: "Courier New", monospace;
+    font-size: 0.66rem;
+    text-align: justify;
+}
+
+.bouteille-jeu[data-mode="sans"] .ile-trois .mini-bouton {
+    opacity: 0;
+}
+
+/* --- d. Les phares ---------------------------------------------------- */
+.phares {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin: 1.2rem 0;
+}
+
+.phare {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.phare img {
+    flex-shrink: 0;
+    width: 64px;
+}
+
+.phare h3 {
+    margin: 0 0 0.2rem;
+    font-family: var(--police-dessin);
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.phare p {
+    margin: 0;
+}
+
+/* --- e. Construis ton bateau ----------------------------------------- */
+.chantier-boutons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+    margin: 1.4rem 0;
+}
+
+.chantier-bouton {
+    padding: 0.5rem 1.2rem;
+    font-family: var(--police-dessin);
+    font-size: 1.25rem;
+    color: var(--trait);
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--trait);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.chantier-bouton:hover:not(:disabled) {
+    transform: translate(-1px, -2px);
+    box-shadow: 4px 5px 0 var(--trait);
+}
+
+/* Étape déjà construite */
+.chantier-bouton.fait {
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+}
+
+.chantier-bouton:disabled {
+    opacity: 0.4;
+    box-shadow: none;
+    cursor: default;
+}
+
+.chantier-bouton.fait:disabled {
+    opacity: 1;
+}
+
+.chantier-scene {
+    display: grid;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+/* La mer où flotte le bateau */
+.chantier-mer {
+    position: relative;
+    min-height: 230px;
+    padding-top: 0.8rem;
+    background: linear-gradient(to bottom, var(--mer-ciel) 70%, var(--mer-eau) 70%);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+    overflow: hidden;
+}
+
+.bateau {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 72%;
+    max-width: 340px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.bateau path,
+.bateau rect,
+.bateau circle {
+    fill: none;
+    stroke: var(--trait);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: opacity 0.5s ease, fill 0.5s ease;
+}
+
+/* Étape 0 : seulement le plan en pointillés */
+.bateau .bateau-plan {
+    stroke: #7FA9B8;
+    stroke-dasharray: 6 9;
+}
+
+.bateau-coque,
+.bateau-deco,
+.bateau-moteur {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.chantier:not([data-etape="0"]) .bateau-plan {
+    opacity: 0;
+}
+
+/* Étape 1 (HTML) : la coque, toute blanche */
+.chantier:not([data-etape="0"]) .bateau-coque {
+    opacity: 1;
+}
+
+.bateau-coque path:first-child,
+.bateau-coque circle {
+    fill: #FFFFFF;
+}
+
+/* Étape 2 (CSS) : peinture, voiles et drapeau */
+.chantier[data-etape="2"] .bateau-deco,
+.chantier[data-etape="3"] .bateau-deco {
+    opacity: 1;
+}
+
+.chantier[data-etape="2"] .bateau-coque path:first-child,
+.chantier[data-etape="3"] .bateau-coque path:first-child {
+    fill: var(--mer-corail);
+}
+
+.chantier[data-etape="2"] .bateau-coque circle,
+.chantier[data-etape="3"] .bateau-coque circle {
+    fill: var(--mer-ciel);
+}
+
+.bateau .bateau-voile {
+    fill: #FFFFFF;
+}
+
+.bateau .bateau-voile2 {
+    fill: var(--mer-sable);
+}
+
+.bateau .bateau-drapeau {
+    fill: var(--couleur-accent-fonce);
+}
+
+.bateau .bateau-bande {
+    stroke: #FFFFFF;
+    stroke-width: 6;
+}
+
+/* Étape 3 (JavaScript) : le moteur démarre et le bateau navigue */
+.chantier[data-etape="3"] .bateau-moteur {
+    opacity: 1;
+}
+
+.bateau .bateau-moteur rect {
+    fill: var(--couleur-bordure);
+}
+
+.bateau .bateau-fumee {
+    fill: #FFFFFF;
+}
+
+.chantier[data-etape="3"] .bateau-fumee {
+    animation: fumee 1.6s ease-out infinite;
+}
+
+.chantier[data-etape="3"] .bateau-fumee2 {
+    animation-delay: 0.8s;
+}
+
+@keyframes fumee {
+    from {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-14px, -22px);
+    }
+}
+
+.chantier[data-etape="3"] .bateau {
+    animation: bateau-navigue 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes bateau-navigue {
+    from {
+        transform: translateX(-8%) rotate(-2deg);
+    }
+
+    to {
+        transform: translateX(8%) rotate(2deg);
+    }
+}
+
+/* Les vagues au premier plan */
+.chantier-vagues {
+    position: absolute;
+    left: -40px;
+    right: -40px;
+    bottom: 18px;
+    z-index: 2;
+    height: 14px;
+    background: radial-gradient(circle at 10px 0, transparent 9px, #FFFFFF 9px 12px, transparent 12px) 0 0 / 24px 14px repeat-x;
+}
+
+.chantier[data-etape="3"] .chantier-vagues {
+    animation: vagues 1.4s linear infinite;
+}
+
+@keyframes vagues {
+    to {
+        transform: translateX(24px);
+    }
+}
+
+/* La mini-page du chantier selon l'étape */
+.chantier-page .mini-page {
+    min-height: 170px;
+}
+
+.chantier-vide {
+    margin: 2.2rem 0;
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--couleur-texte-doux);
+}
+
+.chantier[data-etape="0"] .chantier-page .mini-titre,
+.chantier[data-etape="0"] .chantier-page .mini-texte,
+.chantier[data-etape="0"] .chantier-page .mini-bouton {
+    display: none;
+}
+
+.chantier:not([data-etape="0"]) .chantier-vide {
+    display: none;
+}
+
+/* Étape 1 : la page « brute », sans aucune décoration (HTML seul) */
+.chantier[data-etape="1"] .chantier-page .mini-titre {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.chantier[data-etape="1"] .chantier-page .mini-texte {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.chantier[data-etape="1"] .chantier-page .mini-bouton {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #000000;
+    background-color: #EFEFEF;
+    border: 1px solid #767676;
+    border-radius: 3px;
+}
+
+/* Étape 3 : le bouton réagit */
+.chantier[data-etape="3"] .chantier-action {
+    cursor: pointer;
+    animation: bouton-appel 1.4s ease-in-out infinite;
+}
+
+@keyframes bouton-appel {
+    50% {
+        transform: scale(1.07);
+    }
+}
+
+.chantier-reaction {
+    margin: 0.7rem 0 0;
+    font-family: var(--police-dessin);
+    font-size: 1.3rem;
+    color: var(--couleur-accent-fonce);
+    animation: fiche-apparition 0.35s ease-out;
+}
+
+.chantier-explications {
+    max-width: 42rem;
+    margin: 1.3rem auto 0;
+    padding: 0.8rem 1.1rem;
+    text-align: center;
+    background-color: var(--couleur-surface);
+    border: 2px dashed var(--trait);
+    border-radius: 12px;
+}
+
+.chantier-explication {
+    margin: 0;
+}
+
+.chantier-recommencer-ligne {
+    margin: 1rem 0 0;
+    text-align: center;
+}
+
+/* --- f. Les encadrés HTTP et accessibilité ---------------------------- */
+.deux-encadres {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.encadre-mer {
+    position: relative;
+    padding: 1.2rem 1.3rem 1.2rem 5.2rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.encadre-mer h3 {
+    margin-bottom: 0.3rem;
+    font-family: var(--police-dessin);
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.encadre-mer p {
+    margin: 0;
+}
+
+.encadre-icone {
+    position: absolute;
+    left: 1.3rem;
+    top: 1.3rem;
+}
+
+.encadre-bouteille {
+    left: 1.8rem;
+    top: 1.5rem;
+    transform: rotate(-10deg);
+}
+
+/* La bouée de sauvetage, dessinée en CSS */
+.bouee {
+    width: 56px;
+    height: 56px;
+    background: conic-gradient(var(--mer-corail) 0 25%, #FFFFFF 0 50%, var(--mer-corail) 0 75%, #FFFFFF 0);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 50%;
+}
+
+.bouee::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Petits bouts de code dans le texte de la page */
+.theme-standards code {
+    padding: 0.05rem 0.35rem;
+    font-size: 0.92em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--couleur-accent);
+    border-radius: 5px;
+}
+
+/* Grand écran : îles côte à côte, bateau à côté de sa page */
+@media (min-width: 600px) {
+
+    .phares,
+    .deux-encadres {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 900px) {
+    .iles {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+    }
+
+    .chantier-scene {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+
+/* =====================================================================
+   PAGE SÉCURITÉ — le safari
+   ---------------------------------------------------------------------
+   Même style « dessiné à la main » que les autres pages.
+     a. Carte postale et lettre scellée (HTTPS)
+     b. Le safari photo du phishing (jumelles, messages, indices)
+     c. Le carnet de safari
+     d. Les fiches d'observation
+     e. Le sac à dos de l'explorateur (liste à cocher)
+   ===================================================================== */
+
+/* Couleurs propres à la page : changez-les ici */
+.theme-securite {
+    --safari-kaki: #C9B98F;
+    /* sac à dos, fiches               */
+    --safari-kaki2: #A99A6E;
+    /* coutures et poches              */
+    --safari-papier: #F6E7C8;
+    /* papier kraft du carnet          */
+    --safari-indice: rgba(242, 188, 141, 0.5);
+    /* surlignage d'un indice trouvé */
+    --safari-cire: #D9775F;
+    /* cachet de cire de la lettre     */
+    --safari-lentille: #BFDDF0;
+    /* verre des jumelles              */
+}
+
+/* --- a. Carte postale et lettre scellée ------------------------------ */
+.comparaison-courrier {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.courrier {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.1rem;
+    align-items: center;
+    padding: 1.1rem 1.3rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.courrier h3 {
+    margin: 0 0 0.2rem;
+    font-family: var(--police-dessin);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.courrier p {
+    margin: 0;
+}
+
+.courrier>span {
+    grid-row: span 2;
+}
+
+/* La carte postale : texte lisible à gauche, timbre à droite */
+.dessin-carte-postale,
+.dessin-lettre {
+    position: relative;
+    display: block;
+    width: 86px;
+    height: 58px;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 6px;
+}
+
+.dessin-carte-postale {
+    background:
+        linear-gradient(var(--trait), var(--trait)) 50% 10% / 2px 80% no-repeat,
+        repeating-linear-gradient(to bottom, transparent 0 9px, var(--couleur-accent) 9px 11px) 8px 8px / 34px 40px no-repeat,
+        #FFFFFF;
+    transform: rotate(-4deg);
+}
+
+.dessin-carte-postale::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 16px;
+    height: 18px;
+    background-color: var(--couleur-accent);
+    border: 2px dashed var(--trait);
+}
+
+/* La lettre : enveloppe fermée avec un cachet de cire */
+.dessin-lettre {
+    background:
+        linear-gradient(to bottom right, transparent calc(50% - 1.5px), var(--trait) calc(50% - 1.5px) calc(50% + 1.5px), transparent calc(50% + 1.5px)) left top / 50% 62% no-repeat,
+        linear-gradient(to bottom left, transparent calc(50% - 1.5px), var(--trait) calc(50% - 1.5px) calc(50% + 1.5px), transparent calc(50% + 1.5px)) right top / 50% 62% no-repeat,
+        var(--safari-papier);
+    transform: rotate(3deg);
+}
+
+.dessin-lettre::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    width: 18px;
+    height: 18px;
+    background-color: var(--safari-cire);
+    border: 2px solid var(--trait);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* --- b. Le safari photo du phishing ---------------------------------- */
+.safari-tableau {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem 1rem;
+    margin: 1.5rem 0 2.2rem;
+}
+
+.safari-sortie {
+    margin: 0;
+    padding: 0.25rem 1rem;
+    font-family: var(--police-dessin);
+    font-size: 1.25rem;
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 999px;
+}
+
+.safari-compteur {
+    margin: 0;
+    font-family: var(--police-dessin);
+    font-size: 1.3rem;
+}
+
+.safari-zone {
+    display: grid;
+    gap: 1.6rem;
+    align-items: start;
+}
+
+/* Le cadre des jumelles */
+.jumelles {
+    position: relative;
+    padding: 1rem;
+    background-color: var(--trait);
+    border-radius: 40px;
+    box-shadow: 6px 6px 0 var(--couleur-accent);
+}
+
+/* Les deux oculaires au-dessus du cadre */
+.jumelles::before,
+.jumelles::after {
+    content: "";
+    position: absolute;
+    top: -26px;
+    width: 52px;
+    height: 36px;
+    background: radial-gradient(circle at 50% 60%, var(--safari-lentille) 0 11px, var(--trait) 12px);
+    border-radius: 18px 18px 6px 6px;
+}
+
+.jumelles::before {
+    left: 26%;
+}
+
+.jumelles::after {
+    right: 26%;
+}
+
+/* Le flash de l'appareil photo */
+.flash {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background-color: #FFFFFF;
+    border-radius: 40px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.jumelles.declenche .flash {
+    animation: flash-photo 0.45s ease-out;
+}
+
+@keyframes flash-photo {
+    15% {
+        opacity: 0.85;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Le faux message */
+.safari-message {
+    min-height: 250px;
+    padding: 1.2rem 1.3rem 1.4rem;
+    background-color: #FFFFFF;
+    border-radius: 28px;
+    cursor: zoom-in;
+    /* la loupe invite à chercher partout */
+}
+
+.message-type {
+    display: inline-block;
+    margin: 0 0 0.7rem;
+    padding: 0.05rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background-color: var(--couleur-fond);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+.message-entete {
+    margin: 0 0 0.3rem;
+    font-size: 0.92rem;
+    color: var(--couleur-texte-doux);
+    word-break: break-word;
+}
+
+.message-entete span {
+    font-weight: 800;
+    color: var(--couleur-texte);
+}
+
+.message-corps {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 2px dashed var(--couleur-bordure);
+}
+
+.message-corps p {
+    margin-bottom: 0.7rem;
+}
+
+/* Version « SMS » : une bulle grise */
+.message-bulle {
+    padding: 0.9rem 1rem;
+    background-color: #F1F1F3;
+    border: none;
+    border-radius: 18px 18px 18px 4px;
+}
+
+.message-gros {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+/* Les indices ressemblent à du texte normal… pour qu'il faille les chercher */
+.indice {
+    display: inline;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    word-break: break-word;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: zoom-in;
+}
+
+/* Indice photographié : il est entouré et surligné */
+.indice.reperee {
+    background-color: var(--safari-indice);
+    outline: 3px dashed var(--couleur-accent-fonce);
+    outline-offset: 2px;
+    cursor: default;
+}
+
+/* Indice révélé sans avoir été trouvé */
+.indice.revelee {
+    outline: 3px dashed var(--couleur-texte-doux);
+    outline-offset: 2px;
+    cursor: default;
+}
+
+/* Petit message quand on clique à côté */
+.safari-rien {
+    position: absolute;
+    left: 50%;
+    bottom: -1.2rem;
+    z-index: 6;
+    margin: 0;
+    padding: 0.3rem 1rem;
+    font-family: var(--police-dessin);
+    font-size: 1.1rem;
+    white-space: nowrap;
+    background-color: var(--couleur-surface);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+    transform: translateX(-50%);
+    animation: fiche-apparition 0.3s ease-out;
+}
+
+.safari-fin {
+    margin: 1.8rem auto 0;
+    max-width: 38rem;
+    padding: 0.8rem 1.1rem;
+    text-align: center;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 14px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.safari-fin-texte {
+    margin: 0;
+    font-family: var(--police-dessin);
+    font-size: 1.35rem;
+}
+
+.safari-commandes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 1.4rem 0 0;
+}
+
+/* --- c. Le carnet de safari ----------------------------------------- */
+.carnet-safari {
+    padding: 1rem 1.2rem 1.2rem;
+    background-color: var(--safari-papier);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 12px;
+    box-shadow: var(--ombre-dessin);
+    transform: rotate(1deg);
+}
+
+.carnet-safari h3 {
+    margin: 0 0 0.6rem;
+    font-family: var(--police-dessin);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.carnet-safari-liste {
+    margin: 0;
+    padding-left: 1.3rem;
+}
+
+.carnet-safari-liste li {
+    margin-bottom: 0.6rem;
+    font-size: 0.93rem;
+    line-height: 1.4;
+    animation: fiche-apparition 0.35s ease-out;
+}
+
+.carnet-safari-liste strong {
+    display: block;
+}
+
+.carnet-safari-liste .carnet-revele strong {
+    color: var(--couleur-texte-doux);
+}
+
+.carnet-safari-vide {
+    margin: 0;
+    font-size: 0.93rem;
+    font-style: italic;
+    color: var(--couleur-texte-doux);
+}
+
+/* --- d. Les fiches d'observation ------------------------------------ */
+.fiches-observation {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.fiche-observation {
+    padding: 1rem 1.2rem 1.2rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.fiche-espece {
+    display: inline-block;
+    margin: 0 0 0.5rem;
+    padding: 0.05rem 0.7rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background-color: var(--safari-kaki);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+.fiche-observation h3 {
+    margin: 0 0 0.3rem;
+    font-family: var(--police-dessin);
+    font-size: 1.55rem;
+    font-weight: 400;
+}
+
+.fiche-observation p:last-child {
+    margin: 0;
+}
+
+/* --- e. Le sac à dos de l'explorateur ------------------------------- */
+.sac-a-dos {
+    position: relative;
+    max-width: 38rem;
+    margin: 2.6rem auto 0;
+    padding: 1.6rem 1.3rem 1.2rem;
+    background-color: var(--safari-kaki);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 40px 40px 22px 22px;
+    box-shadow: var(--ombre-dessin);
+}
+
+/* La poignée du sac */
+.sac-a-dos::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -28px;
+    width: 90px;
+    height: 34px;
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-bottom: none;
+    border-radius: 40px 40px 0 0;
+    transform: translateX(-50%);
+}
+
+/* Les coutures */
+.sac-a-dos::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 2px dashed var(--safari-kaki2);
+    border-radius: 32px 32px 15px 15px;
+    pointer-events: none;
+}
+
+.sac-a-dos .checklist {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.sac-a-dos .checklist label {
+    border: 2px solid var(--trait);
+}
+
+.sac-a-dos .checklist-compteur {
+    position: relative;
+    z-index: 1;
+    margin: 0.8rem 0 0;
+    font-family: var(--police-dessin);
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--trait);
+}
+
+@media (min-width: 600px) {
+    .comparaison-courrier {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 900px) {
+    .safari-zone {
+        grid-template-columns: 1.6fr 1fr;
+    }
+
+    .fiches-observation {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* =====================================================================
+   PAGE SOURCES — la banquise
+   ---------------------------------------------------------------------
+   Pas de jeu ici : juste quelques touches de banquise.
+     a. Les flocons qui tombent dans l'introduction
+     b. Les badges de l'équipage
+     c. Les blocs de glace (une étape du voyage = un bloc)
+     d. Les outils d'intelligence artificielle
+   ===================================================================== */
+
+/* Couleurs propres à la page : changez-les ici */
+.theme-sources {
+    --glace: #E4F0F6;
+    /* glace des blocs                   */
+    --glace-fonce: #BFD9E6;
+    /* ombre bleutée de la glace          */
+    --neige: #FFFFFF;
+    /* neige sur le dessus des blocs      */
+
+    /* Rappel de la couleur de chaque étape du voyage */
+    --etape-timeline: #A8D5A2;
+    /* la campagne */
+    --etape-url: #B4BAC4;
+    /* la ville    */
+    --etape-domaine: #D8C4A3;
+    /* la montagne */
+    --etape-standards: #9DD0E0;
+    /* la mer      */
+    --etape-securite: #F2BC8D;
+    /* la savane   */
+}
+
+/* --- a. Les flocons -------------------------------------------------- */
+.intro-banquise {
+    position: relative;
+}
+
+.guide.guide-large img {
+    width: 200px;
+}
+
+.flocons {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.flocons span {
+    position: absolute;
+    top: -12px;
+    width: 9px;
+    height: 9px;
+    background-color: var(--neige);
+    border: 2px solid var(--glace-fonce);
+    border-radius: 50%;
+    animation: flocon-tombe 9s linear infinite;
+}
+
+/* Chaque flocon a sa position, sa taille et son rythme */
+.flocons span:nth-child(1) {
+    left: 6%;
+    animation-delay: 0s;
+}
+
+.flocons span:nth-child(2) {
+    left: 18%;
+    animation-delay: 3s;
+    transform: scale(0.7);
+}
+
+.flocons span:nth-child(3) {
+    left: 31%;
+    animation-delay: 6s;
+}
+
+.flocons span:nth-child(4) {
+    left: 44%;
+    animation-delay: 1.5s;
+    transform: scale(0.8);
+}
+
+.flocons span:nth-child(5) {
+    left: 57%;
+    animation-delay: 4.5s;
+}
+
+.flocons span:nth-child(6) {
+    left: 69%;
+    animation-delay: 7.5s;
+    transform: scale(0.6);
+}
+
+.flocons span:nth-child(7) {
+    left: 82%;
+    animation-delay: 2.2s;
+}
+
+.flocons span:nth-child(8) {
+    left: 93%;
+    animation-delay: 5.2s;
+    transform: scale(0.75);
+}
+
+@keyframes flocon-tombe {
+    0% {
+        top: -12px;
+        opacity: 0;
+        translate: 0 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        translate: 18px 0;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+        translate: -10px 0;
+    }
+}
+
+/* --- b. Les badges de l'équipage ------------------------------------- */
+.equipage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    max-width: 44rem;
+}
+
+.badge-explorateur {
+    position: relative;
+    padding: 1.1rem 1.3rem 1.1rem 4.6rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+/* La petite boussole dessinée sur le badge */
+.badge-explorateur::before {
+    content: "N";
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    font-family: var(--police-dessin);
+    font-size: 1.1rem;
+    background: conic-gradient(var(--glace-fonce) 0 25%, var(--glace) 0 50%, var(--glace-fonce) 0 75%, var(--glace) 0);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.badge-role {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--couleur-texte-doux);
+}
+
+.badge-nom {
+    margin: 0;
+    font-family: var(--police-dessin);
+    font-size: 1.7rem;
+    line-height: 1.2;
+}
+
+/* --- c. Les blocs de glace ------------------------------------------- */
+.blocs-glace {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 1.4rem;
+}
+
+.bloc-glace {
+    --etape-couleur: var(--couleur-accent);
+    position: relative;
+    padding: 1.6rem 1.3rem 1.3rem;
+    background-color: var(--glace);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 14px 22px 16px 26px;
+    /* coins irréguliers, comme un bloc de glace */
+    box-shadow: 6px 7px 0 var(--glace-fonce);
+}
+
+/* La couche de neige posée sur le bloc */
+.bloc-glace::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: -10px;
+    height: 18px;
+    background:
+        radial-gradient(circle at 12px 14px, var(--neige) 11px, transparent 12px) 0 0 / 28px 18px repeat-x;
+    filter: drop-shadow(0 -2px 0 var(--trait));
+}
+
+.bloc-glace[data-etape="timeline"] {
+    --etape-couleur: var(--etape-timeline);
+}
+
+.bloc-glace[data-etape="url"] {
+    --etape-couleur: var(--etape-url);
+}
+
+.bloc-glace[data-etape="domaine"] {
+    --etape-couleur: var(--etape-domaine);
+}
+
+.bloc-glace[data-etape="standards"] {
+    --etape-couleur: var(--etape-standards);
+}
+
+.bloc-glace[data-etape="securite"] {
+    --etape-couleur: var(--etape-securite);
+}
+
+/* L'étiquette de l'étape, dans la couleur de la page correspondante */
+.bloc-glace-etape {
+    display: inline-block;
+    margin: 0 0 0.4rem;
+    padding: 0.1rem 0.8rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: var(--etape-couleur);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+.bloc-glace h3 {
+    margin: 0 0 0.9rem;
+    font-family: var(--police-dessin);
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.theme-sources .source {
+    background-color: var(--couleur-surface);
+    border: 2px solid var(--trait);
+    border-left: 7px solid var(--etape-couleur, var(--couleur-accent));
+    border-radius: 12px;
+}
+
+/* Emplacement libre pour une source à ajouter */
+.theme-sources .source-vide {
+    background-color: transparent;
+    border: 2px dashed var(--couleur-texte-doux);
+    border-left: 7px dashed var(--etape-couleur);
+    opacity: 0.75;
+}
+
+.source-vide .source-titre {
+    font-style: italic;
+}
+
+/* --- d. Les outils d'intelligence artificielle ----------------------- */
+.outils-ia {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+.outil-ia {
+    padding: 1.1rem 1.3rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.outil-ia h3 {
+    margin: 0 0 0.3rem;
+    font-family: var(--police-dessin);
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.outil-ia h3 small {
+    font-family: var(--police);
+    font-size: 0.85rem;
+    color: var(--couleur-texte-doux);
+}
+
+.outil-ia p {
+    margin: 0;
+}
+
+.outils-liste {
+    max-width: 44rem;
+}
+
+@media (min-width: 720px) {
+
+    .equipage,
+    .outils-ia {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .blocs-glace {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .guide.guide-large img {
+        width: 250px;
+    }
+}
+
+
+/* =====================================================================
+   PAGE URL — style « dessiné à la main »
+   ---------------------------------------------------------------------
+   Contours noirs épais et ombres pleines, pour rester cohérent avec
+   le personnage. Les couleurs viennent de la section 1.
+     a. Personnage et bulles
+     b. Enveloppe et URL cliquable
+     c. Carte d'explication
+     d. Tableau de résumé
+     e. Dialogue navigateur / serveur
+     f. Familles de codes (tampons)
+     g. Cartes à gratter
+   ===================================================================== */
+
+/* --- a. Personnage et bulles --------------------------------------- */
+.intro-avec-guide {
+    display: grid;
+    gap: 1.5rem;
+    align-items: end;
+}
+
+.guide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.guide img {
+    width: 130px;
+    animation: guide-balance 4s ease-in-out infinite;
+}
+
+@keyframes guide-balance {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg) translateY(-4px);
+    }
+}
+
+.bulle {
+    position: relative;
+    max-width: 260px;
+    margin: 0 0 1rem;
+    padding: 0.7rem 1rem;
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    text-align: center;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 18px;
+    box-shadow: var(--ombre-dessin);
+}
+
+/* La petite pointe de la bulle (vers le bas) */
+.bulle::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--couleur-surface);
+    border-right: var(--trait-epaisseur) solid var(--trait);
+    border-bottom: var(--trait-epaisseur) solid var(--trait);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* Variante : pointe vers la gauche (bulle à droite du personnage) */
+.bulle-gauche::after {
+    left: -12px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%) rotate(135deg);
+}
+
+.consigne-grattage {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 2.5rem 0 1.5rem;
+}
+
+.consigne-grattage img {
+    flex-shrink: 0;
+    width: 80px;
+}
+
+.consigne-grattage .bulle {
+    margin: 0;
+    max-width: 340px;
+    text-align: left;
+}
+
+.sous-titre-dessin {
+    margin-top: 2rem;
+    font-family: var(--police-dessin);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* --- b. Enveloppe et URL cliquable --------------------------------- */
+.enveloppe {
+    position: relative;
+    margin: 1.5rem 0;
+    padding: 3.2rem 1.2rem 1.4rem;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 10px;
+    box-shadow: var(--ombre-dessin);
+    /* Rabat de l'enveloppe dessiné en arrière-plan */
+    background-image:
+        linear-gradient(to bottom right, transparent calc(50% - 1.5px), var(--couleur-bordure) calc(50% - 1.5px), var(--couleur-bordure) calc(50% + 1.5px), transparent calc(50% + 1.5px)),
+        linear-gradient(to bottom left, transparent calc(50% - 1.5px), var(--couleur-bordure) calc(50% - 1.5px), var(--couleur-bordure) calc(50% + 1.5px), transparent calc(50% + 1.5px));
+    background-size: 50% 2.6rem;
+    background-position: left top, right top;
+    background-repeat: no-repeat;
+}
+
+.enveloppe-timbre {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.8rem;
+    width: 3.4rem;
+    height: 3.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--police-dessin);
+    font-size: 1rem;
+    line-height: 1.1;
+    text-align: center;
+    background-color: var(--url-schema);
+    border: 2px dashed var(--trait);
+    border-radius: 4px;
+    transform: rotate(4deg);
+}
+
+.enveloppe-cachet {
+    position: absolute;
+    top: 1.1rem;
+    right: 4.6rem;
+    padding: 0.3rem 0.6rem;
+    font-family: var(--police-dessin);
+    font-size: 0.85rem;
+    color: var(--couleur-texte-doux);
+    border: 2px solid var(--couleur-accent);
+    border-radius: 50%;
+    transform: rotate(-12deg);
+}
+
+.enveloppe-label {
+    margin: 0 0 0.4rem;
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    color: var(--couleur-texte-doux);
+}
+
+.url-exemple {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.35rem;
+    margin: 0;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: clamp(0.95rem, 3.6vw, 1.2rem);
+}
+
+/* Chaque morceau de l'URL est un bouton cliquable */
+.url-partie {
+    padding: 0.45rem 0.6rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--trait);
+    border: 2px solid var(--trait);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.url-partie[data-partie="schema"] {
+    background-color: var(--url-schema);
+}
+
+.url-partie[data-partie="domaine"] {
+    background-color: var(--url-domaine);
+}
+
+.url-partie[data-partie="chemin"] {
+    background-color: var(--url-chemin);
+}
+
+.url-partie[data-partie="parametres"] {
+    background-color: var(--url-parametres);
+}
+
+/* Surbrillance au survol : le morceau se soulève */
+.url-partie:hover,
+.url-partie:focus-visible {
+    transform: translate(-2px, -3px) rotate(-1deg);
+    box-shadow: 3px 4px 0 var(--trait);
+}
+
+/* Quand on survole un morceau, les autres s'estompent */
+.url-exemple:hover .url-partie:not(:hover):not(.active) {
+    opacity: 0.55;
+}
+
+/* Morceau sélectionné */
+.url-partie.active {
+    transform: translate(-2px, -3px);
+    box-shadow: 3px 4px 0 var(--trait);
+    outline: 3px solid var(--couleur-surface);
+    outline-offset: -6px;
+}
+
+/* Tant qu'on n'a rien cliqué, les morceaux « respirent » pour inviter au clic */
+.url-exemple:not(.deja-clique) .url-partie {
+    animation: url-invitation 2.4s ease-in-out infinite;
+}
+
+.url-exemple:not(.deja-clique) .url-partie:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.url-exemple:not(.deja-clique) .url-partie:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.url-exemple:not(.deja-clique) .url-partie:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes url-invitation {
+
+    0%,
+    70%,
+    100% {
+        transform: translateY(0);
+    }
+
+    80% {
+        transform: translateY(-4px);
+    }
+}
+
+.url-indice {
+    margin: 1rem 0 0;
+    font-family: var(--police-dessin);
+    font-size: 1.1rem;
+    color: var(--couleur-texte-doux);
+}
+
+/* --- c. Carte d'explication ---------------------------------------- */
+.url-carte {
+    --fiche-couleur: var(--couleur-surface);
+    position: relative;
+    min-height: 9rem;
+    padding: 1.3rem 1.3rem 1.1rem;
+    background-color: var(--fiche-couleur);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 16px;
+    box-shadow: var(--ombre-dessin);
+    transition: background-color 0.3s ease;
+}
+
+/* La couleur de la carte suit la partie choisie (classe ajoutée par main.js) */
+.url-carte[data-partie="schema"] {
+    --fiche-couleur: var(--url-schema);
+}
+
+.url-carte[data-partie="domaine"] {
+    --fiche-couleur: var(--url-domaine);
+}
+
+.url-carte[data-partie="chemin"] {
+    --fiche-couleur: var(--url-chemin);
+}
+
+.url-carte[data-partie="parametres"] {
+    --fiche-couleur: var(--url-parametres);
+}
+
+.url-fiche h3 {
+    font-family: var(--police-dessin);
+    font-size: 1.55rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.url-fiche p:last-child {
+    margin-bottom: 0;
+}
+
+/* Animation d'apparition de la fiche */
+.url-fiche.apparition {
+    animation: fiche-apparition 0.35s ease-out;
+}
+
+@keyframes fiche-apparition {
+    from {
+        opacity: 0;
+        transform: translateY(8px) rotate(-1deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.url-fiche-numero {
+    float: right;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0 0 0.5rem 0.75rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--police-dessin);
+    font-size: 1.4rem;
+    background-color: var(--couleur-surface);
+    border: 2px solid var(--trait);
+    border-radius: 50%;
+}
+
+.url-decoupage {
+    margin: 0 0 1rem;
+}
+
+.url-decoupage li {
+    margin-bottom: 0.3rem;
+}
+
+/* Encadré « Pour se représenter » / « Côté poste » */
+.url-fiche-analogie {
+    padding: 0.6rem 0.9rem;
+    background-color: rgba(255, 255, 255, 0.65);
+    border: 2px dashed var(--trait);
+    border-radius: 10px;
+}
+
+.url-fiche-analogie span {
+    display: block;
+    font-family: var(--police-dessin);
+    font-size: 1.1rem;
+    color: var(--couleur-texte-doux);
+}
+
+/* Petits bouts de code dans le texte */
+.theme-url code {
+    padding: 0.05rem 0.35rem;
+    font-size: 0.92em;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--couleur-accent);
+    border-radius: 5px;
+}
+
+/* --- d. Tableau de résumé ------------------------------------------ */
+/* Un peu de marge pour que l'ombre du tableau ne soit pas coupée */
+.tableau-conteneur:has(.tableau-dessin) {
+    padding: 0 6px 6px 0;
+}
+
+.tableau-dessin th,
+.tableau-dessin td {
+    padding: 0.65rem 0.7rem;
+}
+
+.tableau-dessin .pastille {
+    font-size: 0.82em;
+    word-break: break-all;
+}
+
+.tableau-dessin {
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: var(--ombre-dessin);
+}
+
+.tableau-dessin th {
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    font-weight: 400;
+    border-bottom: 2px solid var(--trait);
+}
+
+.tableau-dessin tr:last-child td {
+    border-bottom: none;
+}
+
+.theme-url .pastille {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-weight: 700;
+    border: 2px solid var(--trait);
+    border-radius: 8px;
+}
+
+.pastille[data-partie="schema"] {
+    background-color: var(--url-schema) !important;
+}
+
+.pastille[data-partie="domaine"] {
+    background-color: var(--url-domaine) !important;
+}
+
+.pastille[data-partie="chemin"] {
+    background-color: var(--url-chemin) !important;
+}
+
+.pastille[data-partie="parametres"] {
+    background-color: var(--url-parametres) !important;
+}
+
+/* --- e. Dialogue navigateur / serveur ------------------------------ */
+.dialogue {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 34rem;
+    margin: 1.5rem 0;
+}
+
+.dialogue-bulle {
+    margin: 0;
+    padding: 0.7rem 1rem;
+    font-family: var(--police-dessin);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    background-color: var(--couleur-surface);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 18px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.dialogue-navigateur {
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.dialogue-serveur {
+    align-self: flex-end;
+    background-color: var(--code-succes);
+    border-bottom-right-radius: 4px;
+}
+
+.dialogue-qui {
+    display: block;
+    font-family: var(--police);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--couleur-texte-doux);
+}
+
+/* --- f. Familles de codes (tampons) -------------------------------- */
+.familles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin: 1rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.famille {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--couleur-surface);
+    border: 2px solid var(--trait);
+    border-radius: 14px;
+}
+
+.famille .tampon {
+    grid-row: span 2;
+}
+
+.famille strong {
+    line-height: 1.3;
+}
+
+.famille span:last-child {
+    font-size: 0.95rem;
+    color: var(--couleur-texte-doux);
+    line-height: 1.4;
+}
+
+/* Le tampon rond, comme un cachet de la poste */
+.tampon {
+    --tampon-couleur: var(--code-info);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    font-family: var(--police-dessin);
+    font-size: 1.35rem;
+    background-color: var(--tampon-couleur);
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 4px var(--couleur-surface), inset 0 0 0 6px var(--trait);
+    transform: rotate(-8deg);
+}
+
+[data-famille="info"] {
+    --tampon-couleur: var(--code-info);
+    --carte-couleur: var(--code-info);
+}
+
+[data-famille="succes"] {
+    --tampon-couleur: var(--code-succes);
+    --carte-couleur: var(--code-succes);
+}
+
+[data-famille="redirection"] {
+    --tampon-couleur: var(--code-redirection);
+    --carte-couleur: var(--code-redirection);
+}
+
+[data-famille="erreur-client"] {
+    --tampon-couleur: var(--code-erreur-client);
+    --carte-couleur: var(--code-erreur-client);
+}
+
+[data-famille="erreur-serveur"] {
+    --tampon-couleur: var(--code-erreur-serveur);
+    --carte-couleur: var(--code-erreur-serveur);
+}
+
+[data-famille] .tampon {
+    background-color: var(--tampon-couleur);
+}
+
+/* --- g. Cartes à gratter ------------------------------------------- */
+.cartes-grattage {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.carte-grattage {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    -webkit-user-select: none;
+    /* évite de surligner le texte en grattant */
+    user-select: none;
+    background-color: var(--carte-couleur, var(--couleur-surface));
+    border: var(--trait-epaisseur) solid var(--trait);
+    border-radius: 18px;
+    box-shadow: var(--ombre-dessin);
+}
+
+.carte-grattage-entete {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.9rem;
+}
+
+.carte-grattage-entete p {
+    margin: 0;
+    font-family: var(--police-dessin);
+    font-size: 1.25rem;
+}
+
+.carte-grattage-entete .tampon {
+    background-color: var(--couleur-surface);
+}
+
+/* Zone qui contient le texte caché et la couche à gratter */
+.grattage-zone {
+    position: relative;
+    flex: 1;
+    border: 2px solid var(--trait);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.grattage-contenu {
+    height: 100%;
+    padding: 1rem 1.1rem;
+    background-color: var(--couleur-surface);
+    font-size: 0.98rem;
+}
+
+.grattage-contenu h3 {
+    font-family: var(--police-dessin);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.grattage-contenu p:last-child {
+    margin-bottom: 0;
+}
+
+.carte-attention {
+    font-size: 0.92rem;
+    color: var(--couleur-texte-doux);
+}
+
+.carte-attention::before {
+    content: "⚠ ";
+}
+
+.carte-retenir {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    font-family: var(--police-dessin);
+    font-size: 1.2rem;
+    background-color: var(--carte-couleur);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+}
+
+/* La couche argentée (un <canvas> créé par main.js) */
+.grattage-couche {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: none;
+    /* empêche la page de défiler pendant qu'on gratte */
+    transition: opacity 0.5s ease;
+}
+
+.grattage-couche:active {
+    cursor: grabbing;
+}
+
+/* Une fois la carte révélée, la couche disparaît en fondu */
+.carte-grattage.revelee .grattage-couche {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Une fois révélée, le texte de la carte peut de nouveau être sélectionné */
+.carte-grattage.revelee {
+    -webkit-user-select: auto;
+    user-select: auto;
+}
+
+.grattage-bouton {
+    align-self: center;
+    margin-top: 0.9rem;
+    padding: 0.4rem 1rem;
+    font: inherit;
+    font-family: var(--police-dessin);
+    font-size: 1.1rem;
+    color: var(--trait);
+    background-color: var(--couleur-surface);
+    border: 2px solid var(--trait);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.grattage-bouton:hover {
+    transform: translate(-1px, -2px);
+    box-shadow: 2px 3px 0 var(--trait);
+}
+
+/* Petites étiquettes (ex. : .com, .be, .org) */
+.etiquettes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.etiquettes li {
+    padding: 0.3rem 0.9rem;
+    font-weight: 700;
+    background-color: var(--couleur-accent);
+    border-radius: 999px;
+}
+
+/* --- SÉCURITÉ : liste de bons réflexes à cocher -------------------- */
+.checklist {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.checklist label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.9rem 1.1rem;
+    background-color: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
+    border-radius: var(--arrondi);
+    cursor: pointer;
+}
+
+.checklist input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-top: 0.2rem;
+    accent-color: var(--couleur-accent-fonce);
+    cursor: pointer;
+}
+
+/* Texte barré quand la case est cochée */
+.checklist input:checked+span {
+    text-decoration: line-through;
+    color: var(--couleur-texte-doux);
+}
+
+.checklist-compteur {
+    font-weight: 700;
+    color: var(--couleur-accent-fonce);
+}
+
+/* --- SOURCES : liste des références -------------------------------- */
+.sources-liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.source {
+    padding: 1rem 1.2rem;
+    background-color: var(--couleur-surface);
+    border: 1px solid var(--couleur-bordure);
+    border-left: 5px solid var(--couleur-accent);
+    border-radius: var(--arrondi);
+}
+
+.source-titre {
+    font-weight: 700;
+}
+
+.source-details {
+    font-size: 0.92rem;
+    color: var(--couleur-texte-doux);
+    margin: 0.2rem 0 0;
+}
+
+.source a {
+    word-break: break-word;
+    /* les longs liens passent à la ligne */
+}
+
+
+/* =====================================================================
+   8. PIED DE PAGE ET BOUTON « RETOUR EN HAUT »
+   ===================================================================== */
+.pied {
+    background-color: var(--couleur-surface);
+    border-top: 1px solid var(--couleur-bordure);
+    color: var(--couleur-texte-doux);
+    font-size: 0.95rem;
+}
+
+.pied-contenu {
+    max-width: var(--largeur-max);
+    margin: 0 auto;
+    padding: 1.5rem var(--espace);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.pied p {
+    margin: 0;
+}
+
+.pied-auteurs {
+    font-weight: 700;
+    color: var(--couleur-texte);
+}
+
+.retour-haut {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--couleur-texte-bouton);
+    background-color: var(--couleur-accent-fonce);
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--ombre);
+    cursor: pointer;
+    /* Caché par défaut ; le JavaScript ajoute la classe "visible" */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 90;
+}
+
+.retour-haut.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =====================================================================
+   FONDS DÉCORATIFS — un décor flou derrière l'introduction
+   ---------------------------------------------------------------------
+   Chaque page a son décor (une image .svg dans son dossier d'images).
+   Réglages :
+     --fond-flou     : force du flou (0px = net)
+     --fond-opacite  : visibilité du décor (0 = invisible, 1 = opaque)
+     --fond-hauteur  : hauteur de la bannière
+   Pour retirer le décor d'une page : supprimez sa ligne plus bas.
+   ===================================================================== */
+:root {
+    --fond-flou: 3px;
+    --fond-opacite: 0.55;
+    --fond-hauteur: 440px;
+}
+
+/* Le contenu passe toujours au-dessus du décor */
+main,
+.pied {
+    position: relative;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: var(--hauteur-entete);
+    left: 0;
+    right: 0;
+    height: var(--fond-hauteur);
+    background-position: center bottom;
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    filter: blur(var(--fond-flou));
+    opacity: var(--fond-opacite);
+    /* Le décor se fond doucement en haut et en bas */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 35%, #000 70%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Le décor de chaque page */
+.theme-accueil::before {
+    background-image: url("../images/accueil/fond-espace.svg");
+}
+
+.theme-timeline::before {
+    background-image: url("../images/timeline/fond-campagne.svg");
+}
+
+.theme-url::before {
+    background-image: url("../images/url/fond-ville.svg");
+}
+
+.theme-domaine::before {
+    background-image: url("../images/noms-de-domaine/fond-montagne.svg");
+}
+
+.theme-standards::before {
+    background-image: url("../images/standards/fond-mer.svg");
+}
+
+.theme-securite::before {
+    background-image: url("../images/securite/fond-savane.svg");
+}
+
+.theme-sources::before {
+    background-image: url("../images/sources/fond-banquise.svg");
+}
+
+/* La mer est un peu plus floue, pour laisser toute la place au texte */
+.theme-standards::before {
+    filter: blur(5px);
+}
+
+/* Les étoiles de l'accueil sont petites : on les floute moins */
+.theme-accueil::before {
+    filter: blur(1.5px);
+    opacity: 0.75;
+}
+
+
+/* =====================================================================
+   9. ADAPTATIONS GRANDS ÉCRANS
+   ---------------------------------------------------------------------
+   Le site est pensé d'abord pour le téléphone. Les règles ci-dessous
+   s'appliquent seulement quand l'écran devient plus large.
+   ===================================================================== */
+
+/* Tablette : à partir de 600px */
+@media (min-width: 600px) {
+    .cartes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-sujets {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-sujets a {
+        flex: 1;
+        max-width: 48%;
+    }
+
+    .nav-sujets .suivant {
+        margin-left: auto;
+    }
+
+    /* Page URL */
+    .intro-avec-guide {
+        grid-template-columns: 1fr auto;
+    }
+
+    .guide img {
+        width: 150px;
+    }
+
+    .familles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .consigne-grattage img {
+        width: 100px;
+    }
+}
+
+/* Carnet de voyage sur téléphone : page plus compacte pour voir les flèches */
+@media (max-width: 719px) {
+    .carnet-gauche {
+        padding: 1.2rem 1.2rem 0.2rem;
+    }
+
+    .carnet-photo {
+        max-width: 290px;
+        padding: 7px 7px 18px;
+    }
+
+    .carnet-droite {
+        padding: 0.8rem 1.2rem 1.3rem;
+    }
+
+    .panneau-date span {
+        font-size: 1.7rem;
+        padding: 0 0.9rem;
+    }
+
+    .panneau-date {
+        padding-bottom: 14px;
+        margin-bottom: 0.3rem;
+    }
+
+    .panneau-date::before,
+    .panneau-date::after {
+        height: 22px;
+    }
+
+    .carnet-droite h3 {
+        font-size: 1.5rem;
+    }
+
+    .carnet-droite p {
+        font-size: 1rem;
+    }
+}
+
+/* Carnet de voyage : à partir de 720px, le livre s'ouvre en deux pages */
+@media (min-width: 720px) {
+    .carnet-page {
+        grid-template-columns: 1fr 1fr;
+        min-height: 380px;
+    }
+
+    /* Le pli central du livre et ses coutures */
+    .carnet-livre::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 40px;
+        transform: translateX(-50%);
+        background: linear-gradient(to right, transparent, rgba(42, 46, 53, 0.08) 50%, transparent);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .carnet-livre::after {
+        content: "";
+        position: absolute;
+        top: 14px;
+        bottom: 14px;
+        left: 50%;
+        border-left: 3px dashed var(--couleur-accent);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .carnet-gauche {
+        display: flex;
+        align-items: center;
+        padding: 1.6rem 2rem 1.6rem 1.6rem;
+    }
+
+    .carnet-droite {
+        padding: 1.8rem 1.8rem 1.8rem 2.2rem;
+    }
+
+    .chemin-borne {
+        width: 3.4rem;
+        height: 2.8rem;
+        font-size: 1.05rem;
+    }
+
+    .chemin-voyageur {
+        width: 96px;
+    }
+
+    .chemin {
+        padding-top: 60px;
+    }
+
+    /* Vraie page qui se tourne autour du pli central */
+    .carnet-page.tourne-suivant,
+    .carnet-page.tourne-precedent {
+        animation: none;
+    }
+
+    .carnet-page.tourne-suivant .carnet-gauche {
+        transform-origin: right center;
+        animation: carnet-tourne-gauche 0.6s ease-out;
+    }
+
+    .carnet-page.tourne-precedent .carnet-droite {
+        transform-origin: left center;
+        animation: carnet-tourne-droite 0.6s ease-out;
+    }
+}
+
+/* Ordinateur : à partir de 900px */
+@media (min-width: 900px) {
+
+    /* Le menu s'affiche en ligne, le bouton burger disparaît */
+    .menu-bouton {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+        width: auto;
+    }
+
+    .menu-liste {
+        flex-direction: row;
+        padding: 0;
+        gap: 0.1rem;
+    }
+
+    .menu-liste a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .cartes {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pied-contenu {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    /* Page URL : cinq tampons côte à côte, trois cartes à gratter par ligne */
+    .familles {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .famille {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 0.4rem;
+        text-align: center;
+    }
+
+    .famille .tampon {
+        grid-row: auto;
+    }
+
+    .cartes-grattage {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Cartes 301 et 302 : l'une en dessous de l'autre, sur toute la largeur */
+    .cartes-grattage-duo {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================================================
+   10. ACCESSIBILITÉ : MOUVEMENTS RÉDUITS
+   ---------------------------------------------------------------------
+   Si la personne a demandé à son appareil de limiter les animations,
+   on les désactive.
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

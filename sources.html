@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>Sources — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page -->
+    <meta name="description"
+        content="Les sources utilisées pour réaliser ce site de veille, classées par étape du voyage, et les outils utilisés.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-sources" active les couleurs de la banquise (voir style.css, section 1) -->
+
+<body class="theme-sources">
+
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="noms-de-domaine.html">Noms de domaine</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html" aria-current="page">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ==========================================================
+           INTRODUCTION + PERSONNAGE
+           Les flocons sont de simples <span> animés en CSS.
+           ========================================================== -->
+            <section class="intro intro-avec-guide intro-banquise">
+                <div class="flocons" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div>
+                    <span class="intro-surtitre">Fin du voyage · La banquise</span>
+                    <h1>Sources</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        C'est la fin du voyage ! Avant de rentrer, faisons une pause sur la banquise
+                        pour retrouver d'où viennent toutes les informations de ce site.
+                    </p>
+                </div>
+
+                <figure class="guide guide-large">
+                    <!-- TEXTE À REMPLACER : ce que dit le personnage -->
+                    <p class="bulle">Un chocolat chaud et on relit notre carnet de bord&nbsp;?</p>
+                    <img src="images/sources/banquise.png" alt="" width="420" height="379">
+                </figure>
+            </section>
+
+
+            <!-- ==========================================================
+           L'ÉQUIPAGE (vos deux noms)
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-equipage">
+                <h2 id="titre-equipage">L'équipage de l'expédition</h2>
+                <div class="equipage">
+                    <!-- TEXTE À REMPLACER : votre prénom et votre nom -->
+                    <article class="badge-explorateur">
+                        <p class="badge-role">Exploratrice n°&nbsp;1</p>
+                        <p class="badge-nom">Océane Doret</p>
+                    </article>
+                    <!-- TEXTE À REMPLACER : le prénom et le nom de votre coéquipière -->
+                    <article class="badge-explorateur">
+                        <p class="badge-role">Exploratrice n°&nbsp;2</p>
+                        <p class="badge-nom">Jules Dor</p>
+                    </article>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           LE CARNET DE BORD : LES SOURCES PAR ÉTAPE
+           ----------------------------------------------------------
+           Chaque étape est un « bloc de glace » (<section class="bloc-glace">).
+           Pour ajouter une source, copiez ce modèle dans la bonne liste :
+
+             <li class="source">
+               <p class="source-titre">Titre de la page ou de l'article</p>
+               <p class="source-details">
+                 Site ou organisme<br>
+                 <a href="https://adresse-complete" target="_blank" rel="noopener">https://adresse-complete</a>
+               </p>
+             </li>
+
+           target="_blank" ouvre le lien dans un nouvel onglet ;
+           rel="noopener" est une protection de sécurité à toujours garder avec.
+           Les blocs « Source à ajouter » sont les emplacements libres :
+           remplacez-les par vos sources.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-carnet-bord">
+                <h2 id="titre-carnet-bord">Le carnet de bord</h2>
+                <p class="texte">Nos sources, étape par étape, dans l'ordre du voyage&nbsp;:</p>
+
+                <div class="blocs-glace">
+                    <!-- ---------- La timeline du web ---------- -->
+                    <section class="bloc-glace" data-etape="timeline" aria-labelledby="titre-sources-timeline">
+                        <p class="bloc-glace-etape">Étape 1 · La campagne</p>
+                        <h3 id="titre-sources-timeline">La timeline du web</h3>
+                        <ul class="sources-liste">
+                            <li class="source">
+                                <p class="source-titre">ARPANET</p>
+                                <p class="source-details">
+                                    Wikipédia<br>
+                                    <a href="https://fr.wikipedia.org/wiki/ARPANET" target="_blank"
+                                        rel="noopener">https://fr.wikipedia.org/wiki/ARPANET</a>
+                                </p>
+                            </li>
+                            <li class="source">
+                                <p class="source-titre">How the Internet found its language: the story of TCP/IP</p>
+                                <p class="source-details">
+                                    LinkedIn<br>
+                                    <a href="https://fr.linkedin.com/pulse/how-internet-found-its-language-story-tcpip-kirti-singh-gkwmc?tl=fr"
+                                        target="_blank"
+                                        rel="noopener">https://fr.linkedin.com/pulse/how-internet-found-its-language-story-tcpip-kirti-singh-gkwmc?tl=fr</a>
+                                </p>
+                            </li>
+                            <li class="source">
+                                <p class="source-titre">Petite histoire du World Wide Web</p>
+                                <p class="source-details">
+                                    Cogitime<br>
+                                    <a href="https://www.cogitime.fr/petite-histoire-du-world-wide-web/" target="_blank"
+                                        rel="noopener">https://www.cogitime.fr/petite-histoire-du-world-wide-web/</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- ---------- Les URL ---------- -->
+                    <section class="bloc-glace" data-etape="url" aria-labelledby="titre-sources-url">
+                        <p class="bloc-glace-etape">Étape 2 · La ville</p>
+                        <h3 id="titre-sources-url">Les URL</h3>
+                        <ul class="sources-liste">
+                            <li class="source">
+                                <p class="source-titre">Tout savoir sur les URL : définition et fonctionnement</p>
+                                <p class="source-details">
+                                    Proximus<br>
+                                    <a href="https://www.proximus.be/fr/particuliers/blog/aide/tout-savoir-sur-les-url-definition-fonctionnement/id-b-cr-url.html"
+                                        target="_blank"
+                                        rel="noopener">https://www.proximus.be/fr/particuliers/blog/aide/tout-savoir-sur-les-url-definition-fonctionnement/id-b-cr-url.html</a>
+                                </p>
+                            </li>
+                            <li class="source">
+                                <p class="source-titre">Les redirections HTTP 301 et 302 : permanentes ou temporaires
+                                </p>
+                                <p class="source-details">
+                                    Alsacréations<br>
+                                    <a href="https://www.alsacreations.com/article/lire/1963-Les-redirections-HTTP-301-et-302-permanentes-ou-temporaires.html"
+                                        target="_blank"
+                                        rel="noopener">https://www.alsacreations.com/article/lire/1963-Les-redirections-HTTP-301-et-302-permanentes-ou-temporaires.html</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- ---------- Les noms de domaine ---------- -->
+                    <section class="bloc-glace" data-etape="domaine" aria-labelledby="titre-sources-domaine">
+                        <p class="bloc-glace-etape">Étape 3 · La montagne</p>
+                        <h3 id="titre-sources-domaine">Les noms de domaine</h3>
+                        <ul class="sources-liste">
+                            <li class="source">
+                                <p class="source-titre">Le système des noms de domaine</p>
+                                <p class="source-details">
+                                    ICANN<br>
+                                    <a href="https://www.icann.org/resources/pages/dns-2022-09-13-fr" target="_blank"
+                                        rel="noopener">https://www.icann.org/resources/pages/dns-2022-09-13-fr</a>
+                                </p>
+                            </li>
+                            <!-- EMPLACEMENT LIBRE : remplacez ce bloc par votre source
+                 (copiez le modèle en haut de la liste des sources) -->
+                            <li class="source">
+                                <p class="source-titre">Tout se qu'il faut savoir sur les noms de domaine</p>
+                                <p class="source-details">Afnic <br>
+                                <a href="https://www.afnic.fr/en/associating-excellence/who-we-are/afnic-in-brief/" target="_blank"
+                                    rel="noopener">https://www.afnic.fr/en/associating-excellence/who-we-are/afnic-in-brief/</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- ---------- Les standards du web ---------- -->
+                    <section class="bloc-glace" data-etape="standards" aria-labelledby="titre-sources-standards">
+                        <p class="bloc-glace-etape">Étape 4 · La mer</p>
+                        <h3 id="titre-sources-standards">Les standards du web</h3>
+                        <ul class="sources-liste">
+                            <li class="source">
+                                <p class="source-titre">Web Standards (normes web)</p>
+                                <p class="source-details">
+                                    W3C<br>
+                                    <a href="https://www.w3.org/standards/" target="_blank"
+                                        rel="noopener">https://www.w3.org/standards/</a>
+                                </p>
+                            </li>
+                            <!-- EMPLACEMENT LIBRE : remplacez ce bloc par votre source
+                 (copiez le modèle en haut de la liste des sources) -->
+                            <li class="source">
+                                <p class="source-titre">FAQ WHATWG</p>
+                                <p class="source-details">WHATWG <br>
+                                <a href="https://whatwg.org/faq" target="_blank" rel="noopener">https://whatwg.org/faq</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- ---------- La sécurité sur le web ---------- -->
+                    <section class="bloc-glace" data-etape="securite" aria-labelledby="titre-sources-securite">
+                        <p class="bloc-glace-etape">Étape 5 · La savane</p>
+                        <h3 id="titre-sources-securite">La sécurité sur le web</h3>
+                        <ul class="sources-liste">
+                            <li class="source">
+                                <p class="source-titre">The Open Source Foundation for Application Security</p>
+                                <p class="source-details">
+                                    OWASP Foundation<br>
+                                    <a href="https://owasp.org/" target="_blank" rel="noopener">https://owasp.org/</a>
+                                </p>
+                            </li>
+                            <!-- EMPLACEMENT LIBRE : remplacez ce bloc par votre source
+                 (copiez le modèle en haut de la liste des sources) -->
+                            <li class="source">
+                                <p class="source-titre">Téléchargez l’app Safeonweb et appliquez les conseils</p>
+                                <p class="source-details">Police Fédérale belge <br>
+                                <a href="https://docs.google.com/document/d/19kbHLSn5z4TBO2N-ZwwCh7ugKx7L1Cd9Jr3GmlfWMZ8/edit?tab=t.0 " target="_blank" rel="noopener">https://docs.google.com/document/d/19kbHLSn5z4TBO2N-ZwwCh7ugKx7L1Cd9Jr3GmlfWMZ8/edit?tab=t.0 </p>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           LES OUTILS D'INTELLIGENCE ARTIFICIELLE
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-ia">
+                <h2 id="titre-ia">Les outils d'intelligence artificielle</h2>
+                <p class="texte">Nous avons utilisé deux assistants d'intelligence artificielle pendant ce projet&nbsp;:
+                </p>
+                <div class="outils-ia">
+                    <article class="outil-ia">
+                        <h3>Claude <small>(Anthropic)</small></h3>
+                        <!-- TEXTE À REMPLACER si besoin -->
+                        <p>
+                            Aide à la structure du site, à l'écriture du code HTML, CSS et JavaScript,
+                            à la création des mini-jeux et des illustrations (dessins de la timeline,
+                            montagne, îles…), et à la mise en forme de nos recherches.
+                        </p>
+                    </article>
+                    <article class="outil-ia">
+                        <h3>ChatGPT <small>(OpenAI)</small></h3>
+                        <!-- TEXTE À REMPLACER si besoin -->
+                        <p>
+                            Habillage de notre personnage pour chaque étape du voyage&nbsp;: en voiture,
+                            en randonneur, à la plage, en explorateur et sur la banquise.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           LES AUTRES OUTILS
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-outils">
+                <h2 id="titre-outils">Les autres outils</h2>
+                <ul class="sources-liste outils-liste">
+                    <li class="source">
+                        <p class="source-titre">Polices Nunito et Patrick Hand</p>
+                        <p class="source-details">
+                            Google Fonts<br>
+                            <a href="https://fonts.google.com/" target="_blank"
+                                rel="noopener">https://fonts.google.com/</a>
+                        </p>
+                    </li>
+                    <li class="source">
+                        <p class="source-titre">Hébergement du site</p>
+                        <p class="source-details">
+                            Vercel<br>
+                            <a href="https://vercel.com/" target="_blank" rel="noopener">https://vercel.com/</a>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ---------- Navigation ---------- -->
+            <nav class="nav-sujets" aria-label="Navigation entre les sujets">
+                <a class="precedent" href="securite.html">
+                    <small>← Étape précédente</small>
+                    <strong>La sécurité</strong>
+                </a>
+                <a class="suivant" href="index.html">
+                    <small>Retour au départ →</small>
+                    <strong>Accueil</strong>
+                </a>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Prénom Nom et Prénom Nom</p>
+
+            <!-- TEXTE À REMPLACER : votre école et votre cours -->
+            <p>Examen de web design — Nom de l'école — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>

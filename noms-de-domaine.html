@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TEXTE À REMPLACER : titre affiché dans l'onglet du navigateur -->
+    <title>Les noms de domaine — Voyage au cœur du web</title>
+
+    <!-- TEXTE À REMPLACER : courte description de la page -->
+    <meta name="description"
+        content="Comprendre ce qu'est un nom de domaine, le rôle du DNS et les extensions, avec un memory pour s'entraîner.">
+
+    <!-- Polices chargées depuis Google Fonts (site officiel) :
+       Nunito pour le texte, Patrick Hand pour les titres « dessinés à la main » -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<!-- La classe "theme-domaine" active les couleurs de la montagne (voir style.css, section 1) -->
+
+<body class="theme-domaine">
+
+    <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+    <!-- ============================================================
+       EN-TÊTE ET MENU
+       ============================================================ -->
+    <header class="entete">
+        <div class="entete-contenu">
+            <a class="logo" href="index.html">Voyage au cœur du web</a>
+
+            <button class="menu-bouton" type="button" aria-expanded="false" aria-controls="menu">
+                <span class="menu-bouton-icone" aria-hidden="true">☰</span>
+                Menu
+            </button>
+
+            <nav class="menu" id="menu" aria-label="Menu principal">
+                <ul class="menu-liste">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="timeline.html">Timeline</a></li>
+                    <li><a href="url.html">URL</a></li>
+                    <li><a href="noms-de-domaine.html" aria-current="page">Noms de domaine</a></li>
+                    <li><a href="standards.html">Standards</a></li>
+                    <li><a href="securite.html">Sécurité</a></li>
+                    <li><a href="sources.html">Sources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================================
+       CONTENU PRINCIPAL
+       ============================================================ -->
+    <main id="contenu">
+        <div class="conteneur">
+
+            <!-- ==========================================================
+           INTRODUCTION + PERSONNAGE
+           ========================================================== -->
+            <section class="intro intro-avec-guide">
+                <div>
+                    <span class="intro-surtitre">Étape 3 · La montagne</span>
+                    <h1>Les noms de domaine</h1>
+
+                    <!-- TEXTE À REMPLACER : accroche -->
+                    <p class="intro-texte">
+                        Chaussez vos chaussures de marche&nbsp;: direction les sommets, pour
+                        découvrir comment un simple nom nous mène jusqu'au bon site.
+                    </p>
+                </div>
+
+                <figure class="guide">
+                    <!-- TEXTE À REMPLACER : ce que dit le personnage -->
+                    <p class="bulle">On grimpe&nbsp;? Je connais un sentier qui mène tout en haut&nbsp;!</p>
+                    <img src="images/noms-de-domaine/randonneur.png" alt="" width="360" height="501">
+                </figure>
+            </section>
+
+
+            <!-- ==========================================================
+           1. QU'EST-CE QU'UN NOM DE DOMAINE ?
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-definition">
+                <h2 id="titre-definition">Qu'est-ce qu'un nom de domaine&nbsp;?</h2>
+
+                <div class="texte">
+                    <!-- TEXTE À REMPLACER -->
+                    <p>
+                        Un <strong>nom de domaine</strong> est une adresse unique et lisible qui permet
+                        d'identifier et d'accéder facilement à un site Internet. Il remplace à nos yeux
+                        l'adresse IP du serveur, et il est traduit en adresse IP pour les machines grâce
+                        au système <strong>DNS</strong>.
+                    </p>
+                    <p>
+                        Pour mieux comprendre, prenons l'exemple d'un téléphone. Pour appeler votre maman,
+                        vous devez composer son numéro. Mais retenir le numéro de chaque personne, ce serait
+                        impossible&nbsp;! Vous l'enregistrez donc sous le nom «&nbsp;Maman&nbsp;».
+                    </p>
+                </div>
+
+                <!--
+          LES DEUX CARTES À RETOURNER
+          Face avant : ce que l'on retient. Face arrière : ce que la machine utilise.
+          Un clic sur une carte (ou sur le bouton) la retourne.
+          Le numéro de téléphone est fictif ; 192.0.2.14 est une adresse IP
+          réservée aux exemples.
+        -->
+                <div class="traduction">
+                    <button class="traduction-carte" type="button" aria-pressed="false">
+                        <span class="traduction-face traduction-avant">
+                            <span class="traduction-etiquette">Dans votre téléphone</span>
+                            <span class="traduction-icone" aria-hidden="true">☺</span>
+                            <strong>Maman</strong>
+                        </span>
+                        <span class="traduction-face traduction-arriere">
+                            <span class="traduction-etiquette">Ce que le téléphone compose</span>
+                            <strong class="traduction-numero">0400 00 00 00</strong>
+                        </span>
+                    </button>
+
+                    <span class="traduction-egal" aria-hidden="true">=</span>
+
+                    <button class="traduction-carte" type="button" aria-pressed="false">
+                        <span class="traduction-face traduction-avant">
+                            <span class="traduction-etiquette">Dans votre navigateur</span>
+                            <span class="traduction-barre">monsite.be</span>
+                            <strong>Le nom de domaine</strong>
+                        </span>
+                        <span class="traduction-face traduction-arriere">
+                            <span class="traduction-etiquette">Ce que l'ordinateur utilise</span>
+                            <strong class="traduction-numero">192.0.2.14</strong>
+                            <span>L'adresse IP</span>
+                        </span>
+                    </button>
+                </div>
+
+                <p class="traduction-commande">
+                    <button class="bouton-dessin traduction-bouton" type="button">Traduire en numéros</button>
+                </p>
+            </section>
+
+
+            <!-- ==========================================================
+           2. LE DNS : LE VOYAGE D'UNE ADRESSE
+           ----------------------------------------------------------
+           Les 4 stations sont des boutons placés sur l'image de la
+           montagne (positions en % dans l'attribut style).
+           Les textes de chaque étape sont dans les blocs
+           <article class="dns-fiche"> juste en dessous.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-dns">
+                <h2 id="titre-dns">Le DNS, l'annuaire géant</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p class="texte">
+                    Le <strong>DNS</strong>, c'est un peu comme un annuaire géant&nbsp;: quand vous tapez
+                    le nom d'un site, il le traduit en numéro pour trouver le bon serveur.
+                    Suivez le voyage de l'adresse <code>monsite.be</code> jusqu'au sommet&nbsp;!
+                </p>
+
+                <div class="dns-voyage">
+                    <div class="dns-montagne">
+                        <img class="dns-decor" src="images/noms-de-domaine/montagne.svg" alt="bonhomme qui monte une montagne en 4 étapes" width="800"
+                            height="500">
+                        <span class="dns-drapeau" aria-hidden="true"></span>
+                        <img class="dns-randonneur" src="images/noms-de-domaine/randonneur.png" alt="" width="360"
+                            height="501">
+                        <button class="dns-station" type="button" style="left: 13.75%; top: 91%;" data-etape="0"
+                            aria-label="Étape 1 : Le navigateur">1</button>
+                        <button class="dns-station" type="button" style="left: 32.5%; top: 62%;" data-etape="1"
+                            aria-label="Étape 2 : Le refuge DNS">2</button>
+                        <button class="dns-station" type="button" style="left: 62.5%; top: 43%;" data-etape="2"
+                            aria-label="Étape 3 : L'adresse IP">3</button>
+                        <button class="dns-station" type="button" style="left: 52.5%; top: 19%;" data-etape="3"
+                            aria-label="Étape 4 : Le sommet">4</button>
+                    </div>
+
+                    <div class="dns-panneau" aria-live="polite">
+                        <article class="dns-fiche" data-etape="0">
+                            <p class="dns-fiche-numero">Étape 1 sur 4</p>
+                            <h3>Le navigateur</h3>
+                            <!-- TEXTE À REMPLACER -->
+                            <p>Vous tapez <code>monsite.be</code> dans la barre d'adresse de votre navigateur.</p>
+                        </article>
+                        <article class="dns-fiche" data-etape="1" hidden>
+                            <p class="dns-fiche-numero">Étape 2 sur 4</p>
+                            <h3>Le refuge DNS</h3>
+                            <!-- TEXTE À REMPLACER -->
+                            <p>Le navigateur demande à l'annuaire DNS&nbsp;: «&nbsp;Quel est le numéro de
+                                <code>monsite.be</code>&nbsp;?&nbsp;»</p>
+                        </article>
+                        <article class="dns-fiche" data-etape="2" hidden>
+                            <p class="dns-fiche-numero">Étape 3 sur 4</p>
+                            <h3>L'adresse IP</h3>
+                            <!-- TEXTE À REMPLACER -->
+                            <p>Le DNS trouve la réponse et la renvoie&nbsp;: c'est l'adresse IP du serveur,
+                                <code>192.0.2.14</code>.</p>
+                        </article>
+                        <article class="dns-fiche" data-etape="3" hidden>
+                            <p class="dns-fiche-numero">Étape 4 sur 4</p>
+                            <h3>Le sommet</h3>
+                            <!-- TEXTE À REMPLACER -->
+                            <p>Le navigateur contacte ce serveur, qui lui envoie la page&nbsp;: elle s'affiche à
+                                l'écran&nbsp;!</p>
+                        </article>
+                        <p class="dns-commandes">
+                            <button class="bouton-dessin dns-suivant" type="button">Étape suivante ↑</button>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           3. UN NOM DE DOMAINE SE LOUE
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-location">
+                <h2 id="titre-location">Un nom de domaine, ça se loue</h2>
+                <div class="location">
+                    <div class="texte">
+                        <!-- TEXTE À REMPLACER -->
+                        <p>
+                            On ne devient jamais propriétaire d'un nom de domaine pour toujours&nbsp;:
+                            il se <strong>loue</strong>, généralement à l'année. On parle alors de
+                            <strong>réservation</strong> ou d'<strong>enregistrement</strong>.
+                            Si on oublie de renouveler la location, quelqu'un d'autre peut le réserver.
+                        </p>
+                    </div>
+
+                    <!-- Panneau en bois pour l'anecdote -->
+                    <aside class="panneau-bois" aria-label="Anecdote">
+                        <p class="panneau-bois-titre">Le saviez-vous&nbsp;?</p>
+                        <!-- TEXTE À REMPLACER -->
+                        <p>Le tout premier nom de domaine enregistré est <strong>symbolics.com</strong>, le
+                            15&nbsp;mars&nbsp;1985.</p>
+                    </aside>
+                </div>
+            </section>
+
+
+            <!-- ==========================================================
+           4. LE MEMORY DES EXTENSIONS
+           ----------------------------------------------------------
+           Chaque paire = deux cartes avec le même data-paire.
+           Les deux cartes d'une paire ont la même couleur (style.css,
+           bloc « PAGE NOMS DE DOMAINE », variables --paire-…).
+           Les cartes sont mélangées automatiquement (main.js).
+           Pour ajouter une paire : copiez deux <button class="memo-carte">
+           et donnez-leur le même data-paire.
+           ========================================================== -->
+            <section class="section" aria-labelledby="titre-memory">
+                <h2 id="titre-memory">Le memory des extensions</h2>
+                <div class="texte">
+                    <!-- TEXTE À REMPLACER -->
+                    <p>
+                        L'<strong>extension</strong> est la fin du nom de domaine (<code>.com</code>,
+                        <code>.be</code>…). Elle donne une indication sur le type de site. Retrouvez
+                        chaque extension et sa signification&nbsp;!
+                    </p>
+                </div>
+
+                <div class="memo-grille">
+                    <button class="memo-carte" type="button" data-paire="com" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.com</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="com" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Commercial<small>le plus courant</small></span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="net" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.net</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="net" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Réseaux, technique</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="org" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.org</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="org" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Organisations, associations</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="info" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.info</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="info" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Information</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="biz" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.biz</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="biz" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Business</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="name" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.name</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="name" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Noms de personnes</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="pro" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.pro</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="pro" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Professions réglementées</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="be" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-extension">.be</span>
+                    </button>
+                    <button class="memo-carte" type="button" data-paire="be" aria-label="Carte cachée">
+                        <span class="memo-dos" aria-hidden="true"></span>
+                        <span class="memo-face memo-sens">Belgique<small>une extension par pays</small></span>
+                    </button>
+                </div>
+
+                <div class="memo-score">
+                    <p class="memo-compteur" aria-live="polite">0 coup · 0 paire sur 8</p>
+                    <button class="bouton-dessin memo-rejouer" type="button">Rejouer</button>
+                </div>
+                <p class="memo-bravo" aria-live="polite" hidden>Bravo, vous avez atteint le sommet des extensions&nbsp;!
+                </p>
+            </section>
+
+
+            <!-- ==========================================================
+           5. ENCORE PLUS D'EXTENSIONS
+           ========================================================== -->
+            <section class="section texte" aria-labelledby="titre-thematiques">
+                <h2 id="titre-thematiques">Et bien d'autres encore…</h2>
+                <!-- TEXTE À REMPLACER -->
+                <p>
+                    Il existe aujourd'hui plus de <strong>1&nbsp;200 extensions thématiques</strong>.
+                    Certaines désignent une activité, d'autres une ville, une région, ou même une marque&nbsp;:
+                </p>
+                <!-- Ajoutez ou retirez des <li> librement -->
+                <ul class="etiquettes etiquettes-dessin" aria-label="Exemples d'extensions thématiques">
+                    <li>.app</li>
+                    <li>.dev</li>
+                    <li>.shop</li>
+                    <li>.online</li>
+                    <li>.site</li>
+                    <li>.tech</li>
+                    <li>.blog</li>
+                    <li>.cloud</li>
+                    <li>.store</li>
+                    <li>.agency</li>
+                    <li>.paris</li>
+                    <li>.brussels</li>
+                    <li>.vlaanderen</li>
+                    <li>.bzh</li>
+                    <li>.london</li>
+                    <li>.nyc</li>
+                    <li>.amazon</li>
+                    <li>.google</li>
+                </ul>
+            </section>
+
+
+            <!-- ---------- À retenir ---------- -->
+            <aside class="a-retenir" aria-labelledby="titre-retenir">
+                <h2 id="titre-retenir">À retenir</h2>
+                <!-- TEXTE À REMPLACER -->
+                <ul>
+                    <li>Le nom de domaine est l'adresse lisible d'un site ; l'adresse IP est son « numéro ».</li>
+                    <li>Le DNS est l'annuaire qui traduit le nom de domaine en adresse IP.</li>
+                    <li>Un nom de domaine se loue, généralement à l'année.</li>
+                    <li>L'extension (.com, .org, .be…) indique le type de site ou le pays.</li>
+                </ul>
+            </aside>
+
+            <!-- ---------- Navigation entre les sujets ---------- -->
+            <nav class="nav-sujets" aria-label="Navigation entre les sujets">
+                <a class="precedent" href="url.html">
+                    <small>← Étape précédente</small>
+                    <strong>Les URL</strong>
+                </a>
+                <a class="suivant" href="standards.html">
+                    <small>Étape suivante →</small>
+                    <strong>Les standards du web</strong>
+                </a>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- ============================================================
+       PIED DE PAGE
+       ============================================================ -->
+    <footer class="pied">
+        <div class="pied-contenu">
+            <!-- TEXTE À REMPLACER : vos deux noms -->
+            <p class="pied-auteurs">Réalisé par Prénom Nom et Prénom Nom</p>
+
+            <!-- TEXTE À REMPLACER : votre école et votre cours -->
+            <p>Examen de web design — Nom de l'école — <span class="annee"></span></p>
+
+            <p><a href="sources.html">Sources</a></p>
+        </div>
+    </footer>
+
+    <button class="retour-haut" type="button" aria-label="Retour en haut de la page">↑</button>
+
+</body>
+
+</html>
